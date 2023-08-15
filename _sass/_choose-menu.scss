@@ -1,0 +1,31 @@
+.prx-choose {
+    .card {
+        background: transparent;
+        border: 5px solid $primary;
+        border-radius: 10px;
+        padding-bottom: 6rem;
+
+        &:hover {
+            background-color: $primary;
+            color: $white;
+        }
+
+        &.creator {
+            border-color: $red;
+            
+            &:hover {
+                background-color: $red;
+            }
+        }
+
+        &.partner {
+            border-color: $ltblue;
+            color: $gray-600;
+            
+            &:hover {
+                background-color: $ltblue;
+                color: $black;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+<head>
+    {% include meta.html %}
+
+    {%- feed_meta -%}
+
+    {%- include head.html -%}
+
+</head>
+
+<body>
+    {% include navbar.html %}
+    {{ content }}
+    {% include footer.html %}
+</body>
+</html>

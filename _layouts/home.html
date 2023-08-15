@@ -1,0 +1,37 @@
+---
+layout: default
+permalink: /
+---
+
+<header class="hero bg-primary py-4">
+    <div class="container text-white">
+        <h1 class="choose-logo">{{ page.title }}</h1>
+        {{ content }}
+      </div>
+
+
+</header>
+
+{% assign pages = site.pages | where_exp: "page", "page.type contains 'section'" %}
+{% for page in pages reversed %}
+<section id="{{ page.prx-id }}" class="page {{ page.prx-path }}">
+    <div class="container">
+        <h2>{{ page.title }}</h2>
+        {{ page.content }}
+    </div>
+
+    <aside class="prx-choose container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                {% include partner-card.html  %}
+            </div>
+            <div class="col-md-4">
+                {% include creator-card.html  %}
+            </div>
+            <div class="col-md-4">
+                {% include listener-card.html  %}
+            </div>
+        </div>    
+    </aside>
+</section>
+{% endfor %}

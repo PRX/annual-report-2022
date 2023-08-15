@@ -1,0 +1,24 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.page {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+
+  &.organization {
+    background-color: $bg-orange;
+  }
+
+  &.creator {
+    background-color: $bg-red;
+  }
+
+  &.listener {
+    background-color: $bg-blue;
+  }
+
+  &.partner {
+    background-color: $bg-ltblue;
+  }
+}
