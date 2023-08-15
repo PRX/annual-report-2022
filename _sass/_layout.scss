@@ -2,11 +2,18 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  color: #000;
+  background-color: $white;
+  transition: background-color 1s ease;
+}
+
 .page {
   padding-top: 6rem;
   padding-bottom: 6rem;
+  min-height: 100vh;
 
-  &.organization {
+ /* &.organization {
     background-color: $bg-orange;
   }
 
@@ -20,5 +27,21 @@ html {
 
   &.partner {
     background-color: $bg-ltblue;
-  }
+  }*/
+}
+
+/* colors */
+.color-organization {
+  background-color: $bg-orange;
+}
+
+.color-creator {
+  background-color: $bg-red;
+}
+
+.color-partner {
+  background-color: $bg-ltblue;
+}
+.color-listener {
+  background-color: $bg-blue;
 }

@@ -14,7 +14,7 @@ permalink: /
 
 {% assign pages = site.pages | where_exp: "page", "page.type contains 'section'" %}
 {% for page in pages reversed %}
-<section id="{{ page.prx-id }}" class="page {{ page.prx-path }}">
+<section id="{{ page.prx-id }}" class="page {{ page.prx-path }}" data-color="{{ page.prx-path }}">
     <div class="container">
         <h2>{{ page.title }}</h2>
         {{ page.content }}
