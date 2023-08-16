@@ -3,7 +3,7 @@ $(window).scroll(function() {
     // selectors
     var $window = $(window),
         $body = $('body'),
-        $panel = $('.page');
+        $panel = $('.scroll-bg');
     
     // Change 33% earlier than scroll position so colour is there when you arrive.
     var scroll = $window.scrollTop() + ($window.height() / 3);

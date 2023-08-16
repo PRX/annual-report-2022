@@ -2,5 +2,93 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
     min-height: 100vh;
+
+    .card {
+        aspect-ratio: 1 / 1;
+        position: relative;
+        border-radius: 10px;
+        border: none; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-style: italic;
+        text-align: center;
+        color: $white;
+
+        img {
+            position: absolute;
+            inset: 0px;
+            box-sizing: border-box;
+            padding: 0px;
+            border: none;
+            margin: auto;
+            display: block;
+            width: 0px;
+            height: 0px;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    div.card-grid-text {
+        &:hover { 
+            .grid-hover-heading {
+                display: none;
+            }
+
+            .grid-hover-text {
+                display: block;
+            }
+        }
+
+        .grid-hover-text {
+            display: none;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        a:link,
+        a:visited {
+            color: $white;
+            text-decoration: none;
+        }
+
+        &.listener {
+            background-color: $ltblue;
+            color: $gray-800;
+
+            a:link,
+            a:visited {
+                color: $gray-800;
+            }
+        }
+
+        &.creator {
+            background-color: $red;
+        }
+
+        &.partner {
+            background-color: $blue;
+        }
+
+        &.organization {
+            background-color: $orange;
+            color: $black;
+
+            a:link,
+            a:visited {
+                color: $black;
+            }
+        }
+    }
+
+
 }
   
