@@ -1,6 +1,8 @@
 .hero {
     background-color:$blue;
     padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-bottom: 4rem;
     border-bottom: 3px solid $orange;
+    font-style: italic;
+    text-shadow: 1px 1px 1px $blue;
 }
