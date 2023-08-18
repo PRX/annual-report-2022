@@ -1,0 +1,106 @@
+@mixin square-end {
+    position: absolute;
+    left: -7.5px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background-color: $orange;
+}
+
+@mixin triangle-end {
+    position: absolute;
+    bottom: 2px;
+    right: -12px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 0 15px;
+    border-color: $orange transparent transparent transparent;
+}
+
+.arrow-container {
+    display: block;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    &.top {
+        margin-left: 15%;
+
+        .arrow-left {
+            &:before {
+                content: "";
+                @include square-end;
+            }
+        }
+
+        .arrow-right {
+            &::after {
+                content: "";
+                @include triangle-end;
+            }
+        }
+    }
+
+    &.bottom {
+        margin-right: 85%;
+
+        .arrow-left {
+            &:before {
+                content: "";
+                @include triangle-end;
+            }
+        }
+
+        .arrow-left {
+            &::after {
+                content: "";
+                @include square-end;
+            }
+        }
+    }
+}
+
+.arrow-center {
+    border-top: $arrow-border;
+}
+
+.arrow-left {
+    height: 2rem;
+    border-left: $arrow-border;
+}
+
+.arrow-right {
+    height: 2rem;
+    border-right: $arrow-border;
+}
+
+.organization .arrow-container,
+.listener .arrow-container {
+    &.top {
+        margin-right: 15%;
+    }
+
+    &.bottom {
+        margin-left: 85%;
+    }
+}
+
+.creator .arrow-container {
+    &.top {
+        margin-right: 50%;
+    }
+
+    &.bottom {
+        margin-right: 15%;
+    }
+}
+
+.partner .arrow-container {
+    &.top {
+        margin-right: 85%;
+    }
+}
+

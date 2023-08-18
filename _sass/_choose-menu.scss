@@ -1,9 +1,9 @@
 .prx-choose {
     .card {
+        aspect-ratio: 1 / 1;
         background: transparent;
         border: 5px solid $primary;
         border-radius: 10px;
-        padding-bottom: 6rem;
         font-style: italic;
 
         a:link,
@@ -15,6 +15,15 @@
         &:hover {
             background-color: $primary;
             color: $white;
+
+            &::after {
+                content: "Click to Choose";
+                position: absolute;
+                left: 0;
+                bottom: 2rem;
+                width: 100%;
+                text-align: center;
+            }
         }
 
         &.creator {
