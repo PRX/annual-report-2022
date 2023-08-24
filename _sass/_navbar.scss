@@ -1,8 +1,36 @@
 .prx-navbar {
-    display: flex; 
-    flex-direction: column;
-    background-color: $dark-blue;
+  display: flex; 
+  flex-direction: column;
+  background-color: $dark-blue;
+  text-align: center;
+  width: 50px;
+  height: 100vh;
+}
 
-    width: 50px;
-    height: 100vh;
+.prx-side-btn {
+  text-decoration: none;
+  color: $white;
+  line-height: 1;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  &:hover {
+    background-color: $blue;
+  }
+
+  &.prx-donate-btn {
+    background-color: $orange;
+    color: $black;
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+}
+
+.prx-menu-text {
+  font-size: .875rem;
+  font-style: italic;
+  text-transform: uppercase;
 }
