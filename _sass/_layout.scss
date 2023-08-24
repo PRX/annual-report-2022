@@ -6,6 +6,16 @@ body {
   color: #000;
   background-color: $white;
   transition: background-color 1s ease;
+  display: flex;
+}
+
+.nav-container {
+  width: 50px;
+  height: 100vh;
+}
+
+.content-container {
+  width: calc( 100% - 50px );
 }
 
 .page {

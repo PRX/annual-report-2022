@@ -11,8 +11,13 @@
 </head>
 
 <body class="color-grid">
-  {% include navbar/navbar.html %}
-  {{ content }}
-  {% include app/footer.html %}
+  <header class="nav-container">
+    {% include navbar/navbar.html %}
+  </header>
+
+  <div class="content-container">
+    {{ content }}
+    {% include app/footer.html %}
+  </div>
 </body>
 </html>
