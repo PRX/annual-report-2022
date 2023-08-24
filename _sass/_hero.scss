@@ -1,7 +1,16 @@
 .hero {
-  background-color:$blue;
+  background-color: $blue;
+  background-image: url( '/assets/img/coya-bg-block.svg' );
+  background-repeat: repeat;
   padding-top: 6rem;
   padding-bottom: 4rem;
   border-bottom: 3px solid $orange;
   text-shadow: 1px 1px 1px $blue;
+}
+
+.choose-logo {
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
