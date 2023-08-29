@@ -33,7 +33,7 @@
     }
   }
 
-  div.card-grid-text {
+  div.card-grid {
     &:hover { 
       .grid-hover-heading {
           display: none;
@@ -78,8 +78,8 @@
     }
 
     &.organization {
-      background-color: $orange;
-      color: $black;
+      background-color: $black;
+      color: $white;
 
       a:link,
       a:visited {
@@ -88,4 +88,31 @@
     }
   }
 }
-  
+
+.card-image-bg {
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  z-index: 0;
+  position: absolute;
+  margin-bottom: 0;
+  opacity: 1;
+  border-radius: 10px;
+
+  picture {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    inset: 0px;
+    box-sizing: border-box;
+    margin: 0px;
+
+    img {border-radius: 10px;}
+  }
+}
+
+.card-grid-text {
+  position: relative;
+  z-index: 10;
+}

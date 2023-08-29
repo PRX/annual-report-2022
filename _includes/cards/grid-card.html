@@ -1,0 +1,12 @@
+<div class="card card-grid p-4 {{ include.type }}">
+  {%- if include.image-url -%}
+    <figure class="card-image-bg">{% picture {{ include.image-url }} --alt {{ include.image-alt }} %}</figure>
+  {%- endif -%}
+
+  <div class="card-grid-text"> 
+  {%- if include.hover-text -%}   
+    <p class="grid-hover-text display-1">{{ include.hover-text }}</p> 
+    {% else %} 
+  {%- endif -%}
+  </div>
+</div>
