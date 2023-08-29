@@ -16,7 +16,7 @@ permalink: /
   </div>
 </header>
 
-<section id="grid" class="scroll-bg grid" data-color="partner">  
+<section id="grid" class="scroll-bg grid" data-color="organization">  
   <div class="container scroll-bg">   
       <div class="row g-4 mb-2 mb-md-4">
           <div class="col-md-4">
@@ -45,20 +45,14 @@ permalink: /
 </section>
 
 {% assign pages = site.pages | where_exp: "page", "page.type contains 'welcome'" %}
-{% for page in pages reversed %}
+{% for page in pages %}
 <section id="{{ page.prx-id }}" class="scroll-bg first {{ page.prx-path }}" data-color="{{ page.prx-path }}">
   <div class="container">
     <h2 class="page-heading">{{ page.title }}</h2>
     {{ page.content }}
   </div>
 
-  <aside class="prx-choose container">
-    <div class="arrow-container top">
-      <div class="arrow-start"></div>
-      <div class="arrow-center"></div>
-      <div class="arrow-end"></div>
-    </div>
-
+  <aside class="prx-choose first container">
     <div class="row g-4">
       <div class="col-md-4">
         {% include cards/partner-card.html  %}
