@@ -1,8 +1,6 @@
-<svg width="395" height="215" viewBox="0 0 395 215" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g opacity="0.1">
-<path d="M243.48 0L236.227 40.9162H387.573L395 0H243.48Z" fill="#A1C5E2"/>
-<path d="M18.53 58.6893L11.4219 99.6055H205.644L212.753 58.6893H18.53Z" fill="#A1C5E2"/>
-<path d="M160.004 115.972L152.012 156.888H366.568L374.622 115.972H160.004Z" fill="#A1C5E2"/>
-<path d="M6.35624 174.084L0 215H70.575L76.9313 174.084H6.35624Z" fill="#A1C5E2"/>
-</g>
+<svg width="384" height="215" viewBox="0 0 384 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M236.547 0L229.501 40.9162H376.538L383.753 0H236.547Z" fill="#A1C5E2" fill-opacity="0.49"/>
+<path d="M18.0024 58.6893L11.0967 99.6055H199.789L206.695 58.6893H18.0024Z" fill="#A1C5E2" fill-opacity="0.49"/>
+<path d="M155.448 115.972L147.684 156.888H356.131L363.956 115.972H155.448Z" fill="#A1C5E2" fill-opacity="0.49"/>
+<path d="M6.17526 174.084L0 215H68.5656L74.7408 174.084H6.17526Z" fill="#A1C5E2" fill-opacity="0.49"/>
 </svg>

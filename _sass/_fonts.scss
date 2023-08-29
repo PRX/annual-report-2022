@@ -1,54 +1,198 @@
 :root {
-  --bs-body-font-family: 'RobotoCondensed', 'Roboto', sans-serif;
+  --bs-body-font-family: 'Roboto', sans-serif;
   --bs-body-font-size: 1.2rem;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('/assets/fonts/robotocondensed-bold.woff2') format('woff2'),
-    url('/assets/fonts/robotocondensed-bold.woff') format('woff');
-  font-weight: bold;
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto-black-webfont.woff2") format("woff2"),
+    url("/assets/fonts/roboto-black-webfont.woff") format("woff");
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('/assets/fonts/robotocondensed-bolditalic.woff2') format('woff2'),
-    url('/assets/fonts/robotocondensed-bolditalic.woff') format('woff');
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto-blackitalic-webfont.woff2") format("woff2"),
+    url("/assets/fonts/roboto-blackitalic-webfont.woff") format("woff");
   font-weight: bold;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('/assets/fonts/robotocondensed-italic.woff2') format('woff2'),
-    url('/assets/fonts/robotocondensed-italic.woff') format('woff');
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto-bold-webfont.woff2") format("woff2"),
+    url("/assets/fonts/roboto-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto-italic-webfont.woff2") format("woff2"),
+    url("/assets/fonts/roboto-italic-webfont.woff") format("woff");
   font-weight: normal;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'RobotoCondensed';
-  src: url('/assets/fonts/robotocondensed-regular.woff2') format('woff2'),
-    url('/assets/fonts/robotocondensed-regular.woff') format('woff');
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto-light-webfont.woff2") format("woff2"),
+    url("/assets/fonts/roboto-light-webfont.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto-lightitalic-webfont.woff2") format("woff2"),
+    url("/assets/fonts/roboto-lightitalic-webfont.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto-mediumitalic-webfont.woff2") format("woff2"),
+    url("/assets/fonts/roboto-mediumitalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto-regular-webfont.woff2") format("woff2"),
+    url("/assets/fonts/roboto-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Material Icons';
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-black-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-black-webfont.woff') format('woff');
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-bold-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'montserratbold_italic';
+  src: url('/assets/fonts/montserrat-bolditalic-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-bolditalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-italic-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-light-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-medium-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-medium-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'montserratmedium';
+  src: url('/assets/fonts/montserrat-mediumitalic-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-mediumitalic-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-regular-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-thin-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-thin-webfont.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-thinitalic-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-thinitalic-webfont.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-blackitalic-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-blackitalic-webfont.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-bolditalic-webfont.woff2') format('woff2'),
+       url('/assets/fonts/montserrat-bolditalic-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url('/assets/fonts/material-icons.woff2') format('woff2');
+  src: url("/assets/fonts/material-icons.woff2") format("woff2");
   font-display: swap;
 }
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -59,6 +203,7 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
+

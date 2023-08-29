@@ -5,9 +5,9 @@ permalink: /
 
 <header id="top" class="hero" class="color-grid">
   <div class="container text-white">
-      <div class="row">
+      <div class="row d-flex align-items-center">
           <div class="col-md-4">
-              <h1 class="choose-logo mb-4"><img src="/assets/img/coya-logo-reversed2.svg" alt="{{ page.title }}" /></h1>
+              <h1 class="choose-logo mb-4"><img src="/assets/img/logo-b4.svg" alt="{{ page.title }}" /></h1>
           </div>
           <div class="col-md-8">
               {{ content }}
@@ -106,7 +106,7 @@ permalink: /
 {% for page in pages reversed %}
 <section id="{{ page.prx-id }}" class="scroll-bg page {{ page.prx-path }}" data-color="{{ page.prx-path }}">
   <div class="container">
-    <h2>{{ page.title }}</h2>
+    <h2 class="page-heading">{{ page.title }}</h2>
     {{ page.content }}
   </div>
 
