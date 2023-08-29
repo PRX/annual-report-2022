@@ -1,15 +1,21 @@
 .hero {
   background: $dark-blue;
-  background-image: linear-gradient(90deg, rgba(10,98,141,1) 18%, rgba(2,0,36,1) 60%, rgba(0,58,87,1) 100%), url( '/assets/img/coya-bg-block.svg' );
+  background-image: linear-gradient(90deg, rgba(10,98,141,1) 18%, rgba(2,0,36,1) 60%, rgba(0,58,87,1) 100%);
   background-repeat: repeat;
   padding-top: 6rem;
   padding-bottom: 4rem;
   border-bottom: 3px solid $orange;
+  font-family: "Montserrat", "Roboto", sans-serif;
+  color: $gray-900;
+
+  strong {
+    color: #fff;
+  }
 }
 
 .choose-logo {
   img {
-    width: 100%;
+    width: 96%;
     height: auto;
   }
 }

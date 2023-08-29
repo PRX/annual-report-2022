@@ -1,12 +1,12 @@
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat", "Roboto", sans-serif;
-    font-weight: 700;
-    letter-spacing: -.1rem;
+  font-family: "Montserrat", "Roboto", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.1rem;
 }
 
 .page-heading {
-    background-image: url(/assets/img/heading.svg);
-    background-repeat: no-repeat;
-    padding-left: 55px;
-    text-transform: uppercase;
+  background-image: url(/assets/img/heading.svg);
+  background-repeat: no-repeat;
+  padding-left: 55px;
+  font-weight: 900;
 }

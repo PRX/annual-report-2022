@@ -17,4 +17,7 @@
       {%- endif -%}
     </h2>  
   {%- endif -%}
+  {%- if include.image-url -%}
+  <figure>{% picture {{ include.image-url }} --alt {{ include.alt }} %}</figure>
+  {%- endif -%}
 </div>

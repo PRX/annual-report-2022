@@ -16,91 +16,68 @@ permalink: /
   </div>
 </header>
 
-<section id="grid" class="scroll-bg grid" data-color="partner">
-  <div class="container"> 
-    <div class="row mb-2 mb-md-4 g-4">
-      <div class="col-md-4">
-        {% include grid/grid-image.html
-          image-url="img/2guys.jpg" 
-          alt="two guys at a workshop" %}
-      </div>
-      <div class="col-md-4 scroll-bg">
-        {% include grid/grid-text.html 
-          title="PRX is for Listeners" 
-          type="listener" 
-          grid-link="#the-world" %}
-      </div>
-      <div class="col-md-4 scroll-bg">
-        {% include grid/grid-image.html 
-          image-url="img/laughing.jpg" 
-          alt="two women enjoying a PRX panel" %}
-      </div>
-    </div>
-  </div>    
-  <div class="container scroll-bg" data-color="creator">    
+<section id="grid" class="scroll-bg grid" data-color="partner">  
+  <div class="container scroll-bg">   
       <div class="row g-4 mb-2 mb-md-4">
           <div class="col-md-4">
-              {% include grid/grid-text.html 
-                  title="PRX is for Creators" 
-                  type="creator" 
-                  grid-link="#nairobi-popup" %}
-          </div>
-          <div class="col-md-4">
-              {% include grid/grid-image.html
+              {% include cards/grid-text.html 
+                  title="PRX reached a weekly audience of 6.8 million on air and online."
                   image-url="img/2guys.jpg" 
-                  alt="two guys at a workshop" %}
+                  alt="two guys at a workshop" 
+                  hover-text="6.8 million" %}
           </div>
           <div class="col-md-4">
-              {% include grid/grid-image.html 
-                  image-url="img/laughing.jpg" 
-                  alt="two women enjoying a PRX panel" %}
-          </div>
-      </div>
-  </div>    
-  <div class="container scroll-bg" data-color="partner">   
-      <div class="row g-4 mb-2 mb-md-4">
-          <div class="col-md-4">
-              {% include grid/grid-image.html
-                  image-url="img/2guys.jpg"
-                  alt="two guys at a workshop" %}
-          </div>
-          <div class="col-md-4">
-              {% include grid/grid-image.html
-                  image-url="img/laughing.jpg" 
-                  alt="two women enjoying a PRX panel" %}
-          </div>
-          <div class="col-md-4">
-              {% include grid/grid-text.html 
-                  title="PRX is for Network Partnerships" 
-                  type="partner"
-                  grid-link="#katherine-harris" %}
-          </div>
-      </div>
-  </div>    
-  <div class="container scroll-bg" data-color="organization">   
-      <div class="row g-4 mb-2 mb-md-4">
-          <div class="col-md-4">
-              {% include grid/grid-text.html 
-                  title="PRX reaches over 28 million people on-air and online each month." 
-                  type="organization" 
-                  hover-text="28,000,000" %}
-          </div>
-          <div class="col-md-4">
-              {% include grid/grid-text.html 
+              {% include cards/grid-text.html 
                   title="PRX reaches over 28 million people on-air and online each month." 
                   type="organization"
                   hover-text="28,000,000" %}
           </div>
           <div class="col-md-4">
-              {% include grid/grid-text.html 
-                  title="PRX reaches over 28 million people on-air and online each month." 
-                  type="organization"
-                  hover-text="28,000,000" %}
+              {% include cards/grid-text.html 
+                  title="PRX saw nearly 60 million monthly downloads across our distributed podcasts." 
+                  hover-text="60 million"
+                  image-url="img/laughing.jpg" 
+                  alt="two guys at a workshop"  %}
           </div>
       </div>
   </div>
 </section>
 
+{% assign pages = site.pages | where_exp: "page", "page.type contains 'welcome'" %}
+{% for page in pages reversed %}
+<section id="{{ page.prx-id }}" class="scroll-bg first {{ page.prx-path }}" data-color="{{ page.prx-path }}">
+  <div class="container">
+    <h2 class="page-heading">{{ page.title }}</h2>
+    {{ page.content }}
+  </div>
+
+  <aside class="prx-choose container">
+    <div class="arrow-container top">
+      <div class="arrow-start"></div>
+      <div class="arrow-center"></div>
+      <div class="arrow-end"></div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        {% include cards/partner-card.html  %}
+      </div>
+      <div class="col-md-4">
+        {% include cards/creator-card.html  %}
+      </div>
+      <div class="col-md-4">
+        {% include cards/listener-card.html  %}
+      </div>
+    </div>   
+    
+    <div class="arrow-container bottom">
+      <div class="arrow-start"></div>
+      <div class="arrow-center"></div>
+      <div class="arrow-end"></div>
+    </div>
+  </aside>
+</section>
+{% endfor %}
 
 {% assign pages = site.pages | where_exp: "page", "page.type contains 'section'" %}
 {% for page in pages reversed %}

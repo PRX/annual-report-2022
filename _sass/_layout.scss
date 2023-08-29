@@ -22,8 +22,11 @@ body {
   padding-top: 6rem;
   padding-bottom: 6rem;
   min-height: 100vh;
-  position: relative;
-  z-index: 10;
+
+  &.first {
+    padding-top: 0;
+    min-height: auto;
+  }
 }
 
 .color-organization {
