@@ -1,11 +1,11 @@
 # _data/picture.yml
 
 media_queries:
-  mobile: 'max-width: 480px'
-  tablet: 'max-width: 768'
-  laptop: 'max-width: 1024px'
-  desktop: 'max-width: 1200'
-  wide: 'min-width: 1201'
+    mobile: 'max-width: 480px'
+    tablet: 'max-width: 768'
+    laptop: 'max-width: 1024px'
+    desktop: 'max-width: 1200'
+    wide: 'min-width: 1201'
 
 presets:
   default:

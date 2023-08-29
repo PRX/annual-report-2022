@@ -49,10 +49,19 @@ permalink: /
 <section id="{{ page.prx-id }}" class="scroll-bg first {{ page.prx-path }}" data-color="{{ page.prx-path }}">
   <div class="container">
     <h2 class="page-heading">{{ page.title }}</h2>
-    {{ page.content }}
+    <div class="row">
+      <div class="col-md-8">
+        {{ page.content }}
+      </div>
+      <div class="col-md-4">
+        <figure class="page-image">
+          {% picture {{ page.image }} --alt {{ page.image-alt }}  %}
+          <p class="caption fs-6">{{ page.image-caption }}</p>
+        </figure>
+    </div>
   </div>
 
-  <aside class="prx-choose first container">
+  <aside class="prx-choose container">
     <div class="row g-4">
       <div class="col-md-4">
         {% include cards/partner-card.html  %}
