@@ -28,3 +28,61 @@
     align-items: center;
   }
 }
+
+.card {
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  border: 5px solid $primary;
+  border-radius: 10px;
+  font-style: italic;
+
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:hover {
+    background-color: $primary;
+    color: $white;
+
+    &::after {
+      content: "Click to Choose";
+      position: absolute;
+      left: 0;
+      bottom: 2rem;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &.creator {
+    color: $red;
+    border-color: $red;
+    
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+
+  &.listener {
+    color: $blue;
+    border-color: $blue;
+    
+    &:hover {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+
+  &.partner {
+    border-color: $ltblue;
+    color: $gray-800;
+    
+    &:hover {
+      background-color: $ltblue;
+      color: $black;
+    }
+  }
+}
