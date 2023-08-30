@@ -2,6 +2,7 @@
   font-family: $header-font-family;
   font-weight: 700;
   letter-spacing: -0.1rem;
+  color: $dark-blue;
 }
 
 .page-heading {
@@ -11,6 +12,7 @@
   font-weight: 900;
   margin-bottom: 2rem;
   margin-top: 1.25rem;
+  color: $dark-blue;
 }
 
 .display-1 {
@@ -19,6 +21,7 @@
   font-size: 2rem;
   text-transform: uppercase;
   margin: 0;
+  color: $dark-blue;
 }
 
 .display-2 {
@@ -26,4 +29,13 @@
   font-weight: 700;
   font-size: 1.25rem;
   margin: 0;
+}
+
+.display-3 {
+  font-family: $header-font-family;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin: 0;
+  color: $dark-blue;
 }

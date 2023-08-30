@@ -1,0 +1,4 @@
+<figure class="page-image">
+  {% picture {{ page.image }} --alt {{ page.image-alt }}  %}
+  {%- if page.caption -%}<figcaption class="caption fs-6">{{ page.image-caption }}</figcaption>{%- endif -%}
+</figure>

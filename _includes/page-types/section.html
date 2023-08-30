@@ -7,44 +7,32 @@
     {%- endif -%}
 
     <h3 class="h2 page-heading">{{ page.title }}</h3>
+    
     <div class="row">
       <div class="col-md-8">
         {%- if page.audio -%}
-        <figure>
-          <audio controls src="{{ page.audio }}">
-            <a href="{{ page.audio }}"> Download audio </a>
-          </audio>
-        </figure>
+          {% include cards/audio.html  %}
         {%- endif -%}
         
         {{ page.content }}
       </div>
       <div class="col-md-4">
         {%- if page.image -%}
-        <figure class="page-image">
-          {% picture {{ page.image }} --alt {{ page.image-alt }}  %}
-          {%- if page.caption -%}<figcaption class="caption fs-6">{{ page.image-caption }}</figcaption>{%- endif -%}
-        </figure>
+          {% include cards/image.html  %}
         {%- endif -%}
       </div>
     </div>
 
     {%- if page.quote -%}
-    <blockquote class="quote">
-      {{ page.quote }}
-      {%- if page.quote-citation -%}<footer>{{ page.quote-citation }}</footer>{%- endif -%}
-      </blockquote>
+      {% include cards/quote.html  %}
     {%- endif -%}
 
     {%- if page.infographic -%}
-      TBD...
+      {% include cards/infographic.html  %}
     {%- endif -%}
 
     {%- if page.donor-quote -%}
-    <blockquote class="quote donor-quote">
-      {{ page.donor-quote }}
-      {%- if page.donor-quote-citation -%}<footer>{{ page.donor-quote-citation }}</footer>{%- endif -%}
-      </blockquote>
+      {% include cards/quote-donor.html  %}
     {%- endif -%}
 
     {%- if page.donor-credit -%}
