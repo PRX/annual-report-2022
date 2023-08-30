@@ -1,0 +1,21 @@
+<div class="row">    
+  <div class="col-4">
+    <div class="card card-hero listener">            
+        <p class="fs-4 text-uppercase mb-2 d-flex align-items-center">
+          <span class="material-icons me-2" aria-label="hidden">headphones</span> 
+          <span>Listener Lounge</span>
+        </p>
+        <h2 class="fst-normal">{{ page.hero-title }}</h2>
+        {%- if page.hero-location -%}
+        <p class="fs-4 text-uppercase">{{ page.hero-location }}</p>
+        {%- endif -%}
+    </div>
+  </div>
+  
+  {%- if page.hero-image -%}
+  <div class="col-8">
+    {% include cards/hero-image.html  %}
+  </div>  
+  {%- endif -%}
+  
+</div>

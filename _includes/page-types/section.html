@@ -1,23 +1,12 @@
 <section id="{{ page.prx-id }}" class="scroll-bg page {{ page.prx-path }}" data-color="{{ page.prx-path }}">
   <div class="container">
-    {%- if page.hero-title -%}  
-    <div class="row">    
-      <div class="col-4">
-        {% include cards/listener-hero-card.html  %}
-      </div>
-      {%- if page.hero-image -%}
-      <div class="col-8">
-        <figure class="hero-image">
-          {% picture {{ page.hero-image }} --alt {{ page.hero-image-alt }}  %}
-          {%- if page.hero-caption -%}<figcaption class="caption fs-6">{{ page.hero-image-caption }}</figcaption>{%- endif -%}
-          {%- if page.hero-caption -%}<figcaption class="caption fs-6">{{ page.hero-image-caption }}</figcaption>{%- endif -%}
-        </figure>
-      </div>
-      {%- endif -%}
-    </div>
+    {%- if page.hero-title -%}
+      {% if page.prx-path == "listener" %}  
+        {% include cards/listener-hero.html  %}
+      {% endif %}  
     {%- endif -%}
 
-    <h2 class="page-heading">{{ page.title }}</h2>
+    <h3 class="h2 page-heading">{{ page.title }}</h3>
     <div class="row">
       <div class="col-md-8">
         {%- if page.audio -%}

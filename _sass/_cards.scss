@@ -30,11 +30,14 @@
 }
 
 .card {
-  aspect-ratio: 1 / 1;
   background: transparent;
-  border: 5px solid $primary;
   border-radius: 10px;
   font-style: italic;
+}
+
+.card-choose {
+  aspect-ratio: 1 / 1;
+  border: 5px solid $primary;
 
   a:link,
   a:visited {
@@ -84,5 +87,29 @@
       background-color: $ltblue;
       color: $black;
     }
+  }
+} 
+
+.card-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 60vh;
+
+  &.creator {
+    background-color: $red;
+    color: $white;
+  }
+
+  &.listener {
+    background-color: $blue;
+    color: $white;
+  }
+
+  &.partner {
+    background-color: $ltblue;
+    color: $gray-800;
   }
 }
