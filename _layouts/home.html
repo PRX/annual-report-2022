@@ -3,118 +3,16 @@ layout: default
 permalink: /
 ---
 
-<header id="top" class="hero" class="color-grid">
-  <div class="container text-white">
-      <div class="row d-flex align-items-center">
-          <div class="col-md-4">
-              <h1 class="choose-logo mb-4"><img src="/assets/img/logo-b4.svg" alt="{{ page.title }}" /></h1>
-          </div>
-          <div class="col-md-8">
-              {{ content }}
-          </div>
-      </div>
-  </div>
-</header>
+{% include page-types/hero.html  %}
 
-<section id="grid" class="scroll-bg grid" data-color="organization">  
-  <div class="container scroll-bg">   
-      <div class="row g-4 mb-2 mb-md-4">
-          <div class="col-md-4">
-            {% include cards/grid-card.html 
-              image-url="img/2guys.jpg" 
-              alt="two guys at a workshop" 
-              hover-text="PRX reached a weekly audience of 6.8 million on air and online"
-              type="organization"  %}
-          </div>
-          <div class="col-md-4">
-            {% include cards/grid-card.html 
-              image-url="img/nairobi-1.jpg" 
-              alt="two guys at a workshop" 
-              hover-text="PRX reached a weekly audience of 6.8 million on air and online"
-              type="organization"  %}
-          </div>
-          <div class="col-md-4">
-            {% include cards/grid-card.html 
-              image-url="img/laughing.jpg" 
-              alt="two guys at a workshop" 
-              hover-text="PRX saw nearly 60 million monthly downloads across our distributed podcasts"
-              type="organization"  %}
-          </div>
-      </div>
-  </div>
-</section>
+{% include page-types/grid.html  %}
 
 {% assign pages = site.pages | where_exp: "page", "page.type contains 'welcome'" %}
 {% for page in pages %}
-<section id="{{ page.prx-id }}" class="scroll-bg first {{ page.prx-path }}" data-color="{{ page.prx-path }}">
-  <div class="container">
-    <h2 class="page-heading">{{ page.title }}</h2>
-    <div class="row">
-      <div class="col-md-8">
-        {{ page.content }}
-      </div>
-      <div class="col-md-4">
-        <figure class="page-image">
-          {% picture {{ page.image }} --alt {{ page.image-alt }}  %}
-          <p class="caption fs-6">{{ page.image-caption }}</p>
-        </figure>
-    </div>
-  </div>
-
-  <aside class="prx-choose container">
-    <div class="row g-4">
-      <div class="col-md-4">
-        {% include cards/partner-card.html  %}
-      </div>
-      <div class="col-md-4">
-        {% include cards/creator-card.html  %}
-      </div>
-      <div class="col-md-4">
-        {% include cards/listener-card.html  %}
-      </div>
-    </div>   
-    
-    <div class="arrow-container bottom">
-      <div class="arrow-start"></div>
-      <div class="arrow-center"></div>
-      <div class="arrow-end"></div>
-    </div>
-  </aside>
-</section>
+  {% include page-types/welcome.html  %}
 {% endfor %}
 
 {% assign pages = site.pages | where_exp: "page", "page.type contains 'section'" %}
 {% for page in pages reversed %}
-<section id="{{ page.prx-id }}" class="scroll-bg page {{ page.prx-path }}" data-color="{{ page.prx-path }}">
-  <div class="container">
-    <h2 class="page-heading">{{ page.title }}</h2>
-    {{ page.content }}
-  </div>
-
-  <aside class="prx-choose container">
-    <div class="arrow-container top">
-      <div class="arrow-start"></div>
-      <div class="arrow-center"></div>
-      <div class="arrow-end"></div>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-md-4">
-        {% include cards/partner-card.html  %}
-      </div>
-      <div class="col-md-4">
-        {% include cards/creator-card.html  %}
-      </div>
-      <div class="col-md-4">
-        {% include cards/listener-card.html  %}
-      </div>
-    </div>   
-    
-    <div class="arrow-container bottom">
-      <div class="arrow-start"></div>
-      <div class="arrow-center"></div>
-      <div class="arrow-end"></div>
-    </div>
-  </aside>
-</section>
+  {% include page-types/section.html  %}
 {% endfor %}

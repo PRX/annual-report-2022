@@ -1,6 +1,17 @@
-<div class="card partner">            
-    <div class="card-body">
-        <h3 class="card-title text-uppercase">Partner Projects</h3>
-        <a href="#{{ page.partner-link }}" class="stretched-link">{{ page.partner-title }}</a>
+<div class="card partner">                
+  {%- if page.partner-description -%}
+  <div class="card-descriptive-text d-flex align-items-center flex-column">
+    <h3 class="card-title text-uppercase">PRX is for Partners</h3>
+    <div class="card-description p-4"> 
+      <p class="grid-hover-text display-2">{{ page.partner-description }}</p> 
     </div>
+    <a href="#{{ page.partner-link }}" class="stretched-link"></a>  
+  </div>
+  
+  {% else %}
+  <div class="card-body">  
+    <h3 class="card-title text-uppercase">Partner Projects</h3>
+    <a href="#{{ page.partner-link }}" class="stretched-link">{{ page.partner-title }}</a>
+  </div>  
+  {%- endif -%}
 </div>
