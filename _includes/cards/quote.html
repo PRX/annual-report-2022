@@ -1,18 +1,23 @@
 <div class="row quote">
   {%- if page.quote-image -%}
+  <div class="arrow-container through">
+    <div class="arrow-tall"></div>
+    <div class="arrow-long"></div>
+  </div>
+
   <blockquote class="col-8">
-    <p class="display-3">{{ page.quote }}</p>
+    <div class="display-3">{{ page.quote }}</div>
     {%- if page.quote-citation -%}<footer class="citation">&mdash;{{ page.quote-citation }}</footer>{%- endif -%}
   </blockquote>
 
-  <div class="col-4">
-    <figure class="page-image">
+  <div class="col-4  d-flex align-items-center">
+    <figure class="quote-image">
       {% picture {{ page.quote-image }} --alt {{ page.quote-image-alt }}  %}
     </figure>
   </div>
   {% else %}
   <blockquote>
-    <p class="display-3">{{ page.quote }}</p>
+    <div class="display-3">{{ page.quote }}</div>
     {%- if page.quote-citation -%}<footer class="citation">&mdash;{{ page.quote-citation }}</footer>{%- endif -%}
   </blockquote>
   {%- endif -%}

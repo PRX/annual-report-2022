@@ -1,15 +1,16 @@
 @mixin square-end {
-width: 20px;
-height: 20px;
-background-color: $orange;
+  width: 20px;
+  height: 20px;
+  background-color: $orange;
+  transform: rotate(45deg);
 }
 
 @mixin triangle-end {
-width: 0;
-height: 0;
-border-style: solid;
-border-width: 15px 15px 0 15px;
-border-color: $orange transparent transparent transparent;
+  width: 20px;
+  height: 20px;
+  border: 5px solid $orange;
+  border-left: 0;
+  border-top: 0;
 }
 
 .arrow-container {
@@ -20,29 +21,58 @@ border-color: $orange transparent transparent transparent;
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-
-.arrow-start {
-  &:before {
-    content: "";
-    position: absolute;
-    left: -7.5px;
-    top: 0;
-    @include square-end;
+  .arrow-start {
+    &::before {
+      content: "";
+      position: absolute;
+      left: -7.5px;
+      top: 0;
+      @include square-end;
+    }
   }
-}
 
-.arrow-end {
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    right: -12px;
-    @include triangle-end;
+  .arrow-tall {
+    &::before {
+      content: "";
+      position: absolute;
+      right: calc( 5% + 3px );
+      top: 2rem;
+      @include square-end;
+    }
   }
-}
+
+  .arrow-end {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 15px;
+      right: -7px;
+      transform: rotate(45deg);
+      @include triangle-end;
+    }
+  }
+
+  .arrow-long {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      transform: rotate(132deg);
+      @include triangle-end;
+    }
+  }
 
   &.top {
-    margin-left: 33%;
+      margin-left: 33%;
+  }
+
+  &.through {
+    position: absolute;
+    right: 4rem;
+    top: 0;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -60,11 +90,26 @@ border-color: $orange transparent transparent transparent;
   border-right: $arrow-border;
 }
 
+.arrow-long {
+  border-bottom: $arrow-border;
+  width: 54%;
+  position: absolute;
+  right: 6%;
+  bottom: 1rem;
+}
+
+.arrow-tall {
+  height: 30rem;
+  margin-top: 2rem;
+  margin-right: 5%;
+  border-right: $arrow-border;
+}
+
 .organization .arrow-container,
 .listener .arrow-container {
-&.top {
-  margin-right: 15%;
-}
+  &.top {
+    margin-right: 15%;
+  }
 }
 
 .creator .arrow-container {

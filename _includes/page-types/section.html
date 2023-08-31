@@ -17,7 +17,9 @@
         {{ page.content }}
       </div>
       <div class="col-md-4">
-        {%- if page.image -%}
+        {%- if page.video -%}
+          {{ page.video }}
+        {% elsif page.image  %}  
           {% include cards/image.html  %}
         {%- endif -%}
       </div>
