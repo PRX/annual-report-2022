@@ -1,5 +1,5 @@
 .card {
-  background: transparent url( '/assets/img/logo-b4-vector.svg' ) no-repeat bottom right;
+  background: transparent url( '/assets/img/logo-b4-vector-dark.svg' ) no-repeat bottom right;
   border-radius: 10px;
   font-style: italic;
   border: none;
@@ -21,6 +21,11 @@
   a:visited {
     text-decoration: none;
     color: inherit;
+    transition: all .5s ease-in-out; 
+  }
+
+  &:active {
+    transform: scale(0.95); 
   }
 
   &:hover {
@@ -160,6 +165,7 @@
   align-items: center;
   justify-content: center;
   background-color: $orange;
+  background-image: url( '/assets/img/logo-b4-vector.svg' );
 
   .display-1 {
     font-size: 6rem;

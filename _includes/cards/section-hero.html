@@ -1,0 +1,32 @@
+<div class="row">    
+  <div class="col-md-4">
+    <div class="card card-hero {{ page.prx-path }}">            
+      <p class="fs-4 text-uppercase mb-2 d-flex align-items-center">
+        {% if page.prx-path == "creator" %} 
+          <span class="material-icons me-2" aria-label="hidden">mic</span> 
+          <span>Creator Highlights</span>
+        {% elsif page.prx-path == "listener" %} 
+          <span class="material-icons me-2" aria-label="hidden">headphones</span> 
+          <span>Listener Lounge</span>
+        {% elsif page.prx-path == "partner" %}
+          <span class="material-icons me-2" aria-label="hidden">handshake</span> 
+          <span>Network Partnerships</span> 
+        {%- endif -%}
+      </p>
+      <h2 class="fst-normal">{{ page.hero-title }}</h2>
+      {%- if page.hero-location -%}
+      <p class="fs-4 text-uppercase">{{ page.hero-location }}</p>
+      {%- endif -%}
+
+      {%- if page.path-order -%}
+      <p>{{ page.path-order }} of {{ page.path-total }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+  
+  {%- if page.hero-image -%}
+  <div class="col-md-8">
+    {% include cards/hero-image.html  %}
+  </div>  
+  {%- endif -%}
+</div>

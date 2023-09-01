@@ -1,9 +1,7 @@
 <section id="{{ page.prx-id }}" class="scroll-bg page {{ page.prx-path }}" data-color="{{ page.prx-path }}">
   <div class="container">
-    {%- if page.hero-title -%}
-      {% if page.prx-path == "listener" %}  
-        {% include cards/listener-hero.html  %}
-      {% endif %}  
+    {%- if page.hero-title -%}  
+      {% include cards/section-hero.html  %}
     {%- endif -%}
 
     <h3 class="h2 page-heading">{{ page.title }}</h3>
@@ -44,11 +42,7 @@
   </div>
 
   <aside class="prx-choose container">
-    <div class="arrow-container top">
-      <div class="arrow-start"></div>
-      <div class="arrow-center"></div>
-      <div class="arrow-end"></div>
-    </div>
+    {% include cards/arrows.html class="top" %}
 
     <div class="row g-4">
       <div class="col-md-4">
@@ -62,10 +56,6 @@
       </div>
     </div>   
     
-    <div class="arrow-container bottom">
-      <div class="arrow-start"></div>
-      <div class="arrow-center"></div>
-      <div class="arrow-end"></div>
-    </div>
+    {% include cards/arrows.html class="bottom" %}
   </aside>
 </section>

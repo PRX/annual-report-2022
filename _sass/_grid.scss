@@ -37,11 +37,12 @@
 div.card-grid {
 padding: 0;  
 
-&:hover { 
-  .card-grid-text {
-    opacity: 1;
+  &:active,
+  &:hover { 
+    .card-grid-text {
+      opacity: 1;
+    }
   }
-}
 
   .card-grid-text {
     opacity: 0;

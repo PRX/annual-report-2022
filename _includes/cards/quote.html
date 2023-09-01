@@ -5,12 +5,12 @@
     <div class="arrow-long"></div>
   </div>
 
-  <blockquote class="col-8">
+  <blockquote class="col-md-8">
     <div class="display-3">{{ page.quote }}</div>
     {%- if page.quote-citation -%}<footer class="citation">&mdash;{{ page.quote-citation }}</footer>{%- endif -%}
   </blockquote>
 
-  <div class="col-4  d-flex align-items-center">
+  <div class="col-md-4 d-flex align-items-center">
     <figure class="quote-image">
       {% picture {{ page.quote-image }} --alt {{ page.quote-image-alt }}  %}
     </figure>
