@@ -12,6 +12,11 @@ permalink: /
   {% include page-types/welcome.html  %}
 {% endfor %}
 
+{% assign pages = site.pages | where_exp: "page", "page.type contains 'timeline'" %}
+{% for page in pages %}
+  {% include page-types/timeline.html  %}
+{% endfor %}
+
 {% assign pages = site.pages | where_exp: "page", "page.type contains 'section'" %}
 {% for page in pages reversed %}
   {% include page-types/section.html  %}
