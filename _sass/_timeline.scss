@@ -2,6 +2,8 @@
   /*	OVERRIDING DEFAULTS
   ----------------------------------------------------- */
 .prx-timeline-embed {
+  border-bottom: 3px solid $orange;
+
   .tl-timeline,
   .tl-story-slider {
     font-family: $header-font-family;
@@ -41,9 +43,19 @@
     text-shadow: none;
   }
 
+  .tl-slidenav-previous .tl-slidenav-content-container .tl-slidenav-icon, .tl-slidenav-next .tl-slidenav-content-container .tl-slidenav-icon, .tl-slidenav-previous .tl-slidenav-content-container .tl-slidenav-title, .tl-slidenav-next .tl-slidenav-content-container .tl-slidenav-title, .tl-slidenav-previous .tl-slidenav-content-container .tl-slidenav-description, .tl-slidenav-next .tl-slidenav-content-container .tl-slidenav-description {
+    text-shadow: none;
+    color: $white;
+  }
+
+  .tl-slidenav-previous .tl-slidenav-title, .tl-slidenav-next .tl-slidenav-title {
+    opacity: 0.8;
+  }
+
   .tl-timeline h2.tl-headline-title {
-    font-size: 58px;
-    line-height: 58px;
+    font-size: 2.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.1rem;
   }
 
   .tl-timeline p {
@@ -92,9 +104,12 @@
   }
   .tl-timeline .tl-headline-date,
   .tl-timeline h3.tl-headline-date {
-    font-family: $header-font-family;
+    font-family: $header-font-family !important;
     font-weight: normal !important;
     text-transform: none !important;
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
   }
   .tl-timeline .tl-headline-date small,
   .tl-timeline h3.tl-headline-date small {
@@ -103,7 +118,6 @@
   .tl-timeline .tl-timenav-slider {
     font-family: $header-font-family;
     font-weight: 700;
-    background-color: $dark-blue;
   }
   .tl-timeline .tl-timenav-slider h2.tl-headline {
     font-family: $header-font-family;
@@ -133,4 +147,15 @@
     font-size: 46px;
     line-height: 46px;
   }
+
+  .tl-slide {
+    &.tl-slide-titleslide {
+      background-image: linear-gradient(90deg, rgba(10,98,141,1) 18%, rgba(2,0,36,1) 60%, rgba(0,58,87,1) 100%);
+      
+      .tl-headline,
+      .tl-headline-date {
+        color: $white;
+      }
+    }
+  }  
 }
