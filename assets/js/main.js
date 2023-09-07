@@ -1,29 +1,54 @@
-$(window).scroll(function() {
-  
-    // selectors
-    var $window = $(window),
-        $body = $('body'),
-        $panel = $('.scroll-bg');
-    
-    // Change 33% earlier than scroll position so colour is there when you arrive.
-    var scroll = $window.scrollTop() + ($window.height() / 3);
-   
-    $panel.each(function () {
-      var $this = $(this);
-      
-      // if position is within range of this panel.
-      // So position of (position of top of div <= scroll position) && (position of bottom of div > scroll position).
-      // Remember we set the scroll to 33% earlier in scroll var.
-      if ($this.position().top <= scroll && $this.position().top + $this.height() > scroll) {
-            
-        // Remove all classes on body with color-
-        $body.removeClass(function (index, css) {
-          return (css.match (/(^|\s)color-\S+/g) || []).join(' ');
-        });
-         
-        // Add class of currently active div
-        $body.addClass('color-' + $(this).data('color'));
-      }
-    });    
-    
-  }).scroll();
+function position(el) {
+  const {top, left} = el.getBoundingClientRect();
+  const {marginTop, marginLeft} = getComputedStyle(el);
+  return {
+    top: top - parseInt(marginTop, 10),
+    left: left - parseInt(marginLeft, 10)
+  };
+}
+
+function scrollTop(el, value) {
+  var win;
+  if (el.window === el) {
+    win = el;
+  } else if (el.nodeType === 9) {
+    win = el.defaultView;
+  }
+
+  if (value === undefined) {
+    return win ? win.pageYOffset : el.scrollTop;
+  }
+
+  if (win) {
+    win.scrollTo(win.pageXOffset, value);
+  } else {
+    el.scrollTop = value;
+  }
+}
+
+function updateBackgroundColor() {
+  const body = this.document.querySelector('body');
+  const panels = this.document.getElementsByClassName('scroll-bg');
+
+  const scroll = scrollTop(window) + (window.innerHeight / 3);
+
+  for (const panel of panels) {
+    if (position(panel).top <= scroll && position(panel).top + panel.offsetHeight > scroll) {
+      body.classList.forEach(clss => {
+        if (clss.startsWith('color-')) {
+          body.classList.remove(clss);
+        }
+      })
+
+      body.classList.add(`color-${panel.getAttribute('data-color')}`)
+    }
+  }
+}
+
+window.addEventListener('scroll', updateBackgroundColor);
+
+(function () {
+  document.addEventListener('DOMContentLoaded', async (_) => {
+    updateBackgroundColor();
+  })
+})();
