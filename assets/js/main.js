@@ -3,12 +3,15 @@ window.addEventListener("scroll", function() {
   var body = document.body,
       panels = document.querySelectorAll('.scroll-bg');
 
+  // Calculate the offset to start changing colors (33%)
+  var offset = window.innerHeight / 3;
+
   // Iterate through each panel
   panels.forEach(function (panel) {
     var rect = panel.getBoundingClientRect();
 
     // Calculate the top and bottom scroll positions for this panel
-    var panelTop = rect.top + window.pageYOffset;
+    var panelTop = rect.top + window.pageYOffset - offset; // Adjusted with offset
     var panelBottom = panelTop + rect.height;
 
     // Check if the current scroll position is within the panel's range
