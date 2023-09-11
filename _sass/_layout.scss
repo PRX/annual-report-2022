@@ -18,9 +18,13 @@ body {
 }
 
 .page {
-  padding-top: 6rem;
+  padding-top: 5rem;
   padding-bottom: 6rem;
   min-height: 100vh;
+
+  .container {
+    padding-top: 1rem;
+  }
 
   &.first {
     padding-top: 0;
@@ -32,22 +36,26 @@ body {
   margin-bottom: 2rem;
 }
 
+[data-theme="organization"],
 .color-organization {
   background-color: $bg-orange;
 }
 
-.color-creator {
+[data-theme="creator"] {
   background-color: $bg-red;
 }
 
+[data-theme="partner"],
 .color-partner {
   background-color: $bg-ltblue;
 }
 
+[data-theme="listener"], 
 .color-listener {
   background-color: $bg-blue;
 }
 
+[data-theme="grid"], 
 .color-grid {
   background-color: $white;
 }
