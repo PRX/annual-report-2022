@@ -36,8 +36,7 @@ body {
   margin-bottom: 2rem;
 }
 
-[data-theme="organization"],
-.color-organization {
+[data-theme="organization"] {
   background-color: $bg-orange;
 }
 
@@ -45,18 +44,15 @@ body {
   background-color: $bg-red;
 }
 
-[data-theme="partner"],
-.color-partner {
+[data-theme="partner"] {
   background-color: $bg-ltblue;
 }
 
-[data-theme="listener"], 
-.color-listener {
+[data-theme="listener"] {
   background-color: $bg-blue;
 }
 
-[data-theme="grid"], 
-.color-grid {
+[data-theme="grid"] {
   background-color: $white;
 }
 
