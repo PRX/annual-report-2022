@@ -12,7 +12,7 @@ permalink: /
   {% include page-types/welcome.html  %}
 {% endfor %}
 
-{% assign pages = site.pages | where_exp: "page", "page.type contains 'section'" %}
-{% for page in pages reversed %}
+{% assign pages = site.pages | where_exp: "page", "page.type contains 'section'" | sort: "order" %}
+{% for page in pages %}
   {% include page-types/section.html  %}
 {% endfor %}

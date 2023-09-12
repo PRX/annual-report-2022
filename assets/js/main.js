@@ -1,29 +1,23 @@
-$(window).scroll(function() {
-  
-    // selectors
-    var $window = $(window),
-        $body = $('body'),
-        $panel = $('.scroll-bg');
-    
-    // Change 33% earlier than scroll position so colour is there when you arrive.
-    var scroll = $window.scrollTop() + ($window.height() / 3);
-   
-    $panel.each(function () {
-      var $this = $(this);
-      
-      // if position is within range of this panel.
-      // So position of (position of top of div <= scroll position) && (position of bottom of div > scroll position).
-      // Remember we set the scroll to 33% earlier in scroll var.
-      if ($this.position().top <= scroll && $this.position().top + $this.height() > scroll) {
-            
-        // Remove all classes on body with color-
-        $body.removeClass(function (index, css) {
-          return (css.match (/(^|\s)color-\S+/g) || []).join(' ');
-        });
-         
-        // Add class of currently active div
-        $body.addClass('color-' + $(this).data('color'));
-      }
-    });    
-    
-  }).scroll();
+// Function to handle changes in intersection
+function handleIntersection(entries, observer) {
+  entries.forEach(function (entry) {
+   console.log(entry.isIntersecting);
+    if (entry.isIntersecting) {
+      console.log(entry.target.getAttribute('data-color'));
+      document.body.setAttribute('data-theme', entry.target.getAttribute('data-color'));
+    }
+  });
+}
+
+// Create an Intersection Observer
+var observer = new IntersectionObserver(handleIntersection, {
+  //threshold: 0.33, // Trigger when 33% of the target is visible
+});
+
+// Select all panels with the class 'scroll-bg'
+var panels = document.querySelectorAll('[data-color]');
+
+// Observe each panel
+panels.forEach(function (panel) {
+  observer.observe(panel);
+});
