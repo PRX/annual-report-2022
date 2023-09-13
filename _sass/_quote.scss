@@ -1,0 +1,28 @@
+blockquote {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 992px) {
+  .quote-image-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1;
+    align-items: center;
+
+    .quote-text {
+      grid-row: 1;
+      grid-column: span 2;
+    }
+
+    .quote-arrow,
+    .quote-image {
+      grid-row: 1;
+      grid-column: 3;
+    }
+
+    .quote-arrow {
+      margin-right: 3rem;
+    }
+  }
+}

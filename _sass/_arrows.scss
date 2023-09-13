@@ -39,7 +39,7 @@
     &::before {
       content: "";
       position: absolute;
-      right: calc( 5% + 3px );
+      right: calc( 6rem + 4px );
       top: 2rem;
       @include square-end;
     }
@@ -69,14 +69,6 @@
 
   &.top {
       margin-left: 33%;
-  }
-
-  &.through {
-    position: absolute;
-    right: 4rem;
-    top: 0;
-    width: 100%;
-    height: auto;
   }
 
   &.organization,
@@ -115,15 +107,16 @@
 
 .arrow-long {
   border-bottom: $arrow-border;
-  width: 54%;
+  width: 150%;
   position: absolute;
-  right: 6%;
+  right: 7rem;
   bottom: 1rem;
 }
 
 .arrow-tall {
-  height: 30rem;
-  margin-top: 2rem;
-  margin-right: 5%;
+  height: auto;
+  margin-top: 1rem;
+  margin-right: 6rem;
   border-right: $arrow-border;
+  padding-top: 80%;
 }
