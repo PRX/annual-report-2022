@@ -1,0 +1,21 @@
+<a href="#{{ include.link }}" class="card card-choose {{ include.choose-path }} {{ include.choose-style }}">
+	{%- if include.description -%}
+	<div class="icon-bg"><span class="material-icons">{{ include.icon }}</span></div>  
+	<div class="card-body card-descriptive-text d-flex justify-content-center flex-column">  
+    <div class="h2 card-title text-uppercase d-flex align-items-center">
+      {{ include.heading }}
+    </div>
+		<div class="card-description">
+			{{ include.description }}
+		</div>
+  </div>
+	{%- else -%}
+  <div class="card-body">  
+    <div class="h4 card-title text-uppercase d-flex align-items-center">
+      <span class="material-icons me-2">{{ include.icon }}</span>
+      {{ include.heading }}
+    </div>
+    <div>{{ include.title }}</div>
+  </div>
+	{%- endif -%}
+</a>

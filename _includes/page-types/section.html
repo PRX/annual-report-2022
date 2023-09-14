@@ -42,20 +42,27 @@
   </div>
 
   <aside class="prx-choose container">
-    {% include cards/arrows.html class="top" %}
-
-    <div class="row g-4">
-      <div class="col-md-4">
-        {% include cards/partner-card.html  %}
-      </div>
-      <div class="col-md-4">
-        {% include cards/creator-card.html  %}
-      </div>
-      <div class="col-md-4">
-        {% include cards/listener-card.html  %}
-      </div>
-    </div>   
-    
-    {% include cards/arrows.html class="bottom" %}
+    {% include cards/choose-card.html 
+      choose-path="partner"
+      link=page.partner-link
+      icon="handshake"
+      heading="Network Partners"
+      title=page.partner-title
+    %}
+    {% include cards/choose-card.html 
+      choose-path="creator"
+      link=page.creator-link
+      icon="mic"
+      heading="Creator Projects"
+      title=page.creator-title
+    %}
+    {% include cards/choose-card.html 
+      choose-path="listener"
+      link=page.listener-link
+      icon="headphones"
+      heading="Listener Lounge"
+      title=page.listener-title
+    %}
+    {% include cards/arrows.html %}
   </aside>
 </section>
