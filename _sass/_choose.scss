@@ -129,29 +129,28 @@
 @media (min-width: 992px) {
   .prx-choose {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 2;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      'AS1 AS2 AS3 AS4 AS5 AS6'
+      'CD1 CD1 CD2 CD2 CD3 CD3'
+      'AE1 AE2 AE3 AE4 AE5 AE6';
     align-items: center;
     grid-gap: 1.5rem;
   }
 
   .partner {
-    grid-row: 2;
-    grid-column: 1;
+    grid-area: CD1;
   }
 
   .creator {
-    grid-row: 2;
-    grid-column: 2;
+    grid-area: CD2;
   }
 
   .listener {
-    grid-row: 2;
-    grid-column: 3;
+    grid-area: CD3;
   }
 
-  .arrow-container {
-    grid-row: 1;
-    grid-column: span 3;
+  .card[data-path="CD1"]:hover ~ .arrow-start[data-start="B"] {
+    grid-area: span AS1 / span AS3;
   }
 }
