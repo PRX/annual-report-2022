@@ -130,8 +130,28 @@
   .prx-choose {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1;
+    grid-template-rows: 2;
     align-items: center;
     grid-gap: 1.5rem;
+  }
+
+  .partner {
+    grid-row: 2;
+    grid-column: 1;
+  }
+
+  .creator {
+    grid-row: 2;
+    grid-column: 2;
+  }
+
+  .listener {
+    grid-row: 2;
+    grid-column: 3;
+  }
+
+  .arrow-container {
+    grid-row: 1;
+    grid-column: span 3;
   }
 }
