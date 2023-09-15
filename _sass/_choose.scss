@@ -1,101 +1,9 @@
-.card-choose {
-  aspect-ratio: 1 / 1;
-  border: 5px solid $primary;
-  background-image: none;
-  margin-top: 2rem;
-  text-decoration: none;
-  color: inherit;
-  transition: scale .5s ease-in-out; 
-
-  &:active {
-    transform: scale(0.95); 
-  }
-
-  &:hover {
-    background-color: $primary;
-    color: $white;
-  }
-
-  &.creator {
-    color: $red;
-    border-color: $red;
-    
-    &:hover {
-      background-color: $red;
-      color: $white;
-
-      .h4 {
-        color: $white;
-      }
-    }
-
-    .h4 {
-      color: $red;
-    }
-  }
-
-  &.listener {
-    color: $blue;
-    border-color: $blue;
-    
-    &:hover {
-      background-color: $blue;
-      color: $white;
-
-      .h4 {
-        color: $white;
-      }
-    }
-
-    .h4 {
-      color: $blue;
-    }
-  }
-
-  &.partner {
-    border-color: $ltblue;
-    color: $gray-800;
-    
-    &:hover {
-      background-color: $ltblue;
-      color: $black;
-    }
-  }
-} 
-
 .path-highlight {
   border: 5px solid $orange;
 
   .card-descriptive-text {
     position: relative;
     z-index: 10;
-  }
-  
-  &.creator {
-    background-color: $red;
-    color: $white;
-
-    .h2 {
-      color: $white;
-    }
-  }
-
-  &.listener {
-    background-color: $blue;
-    color: $white;
-
-    .h2 {
-      color: $white;
-    }
-  }
-
-  &.partner {
-    background-color: $ltblue;
-    color: $dark-blue;
-
-    .icon-bg {
-      .material-icons {color: $white;}
-    }
   }
 
   .icon-bg {
@@ -125,14 +33,20 @@
   grid-template-areas:
     "--_ ARW ARW ARW ARW _--"
     "AAA AAA BBB BBB CCC CCC";
-  gap: 1.5rem;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 0.5rem; 
 }
 
 .card-choose {
   position: relative;
   display: grid;
-  border-radius: 1rem;
   text-decoration: none;
+
+  aspect-ratio: 1 / 1;
+  border: 5px solid $primary;
+  background-image: none;
+  color: inherit;
+  transition: scale .5s ease-in-out; 
 
   cursor: pointer;
 
@@ -142,105 +56,88 @@
     inset: 0 -0.5rem;
   }
 
+  &:active {
+    transform: scale(0.95); 
+  }
+
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+
   &[data-path-target="partner"] {
     grid-area: AAA;
+    border-color: $ltblue;
+    color: $gray-800;
+    
+    &:hover {
+      background-color: $ltblue;
+      color: $black;
+    }
+
+    &.path-highlight {
+      background-color: $ltblue;
+      color: $dark-blue;
+  
+      .icon-bg {
+        .material-icons {color: $white;}
+      }
+    }
   }
 
   &[data-path-target="creator"] {
     grid-area: BBB;
+    color: $red;
+    border-color: $red;
+      
+    &:hover {
+      background-color: $red;
+      color: $white;
+
+      .h4 {
+        color: $white;
+      }
+    }
+
+    .h4 {
+      color: $red;
+    }
+
+    &.path-highlight {
+      background-color: $red;
+      color: $white;
+  
+      .h2 {
+        color: $white;
+      }
+    }
   }
 
   &[data-path-target="listener"] {
     grid-area: CCC;
-  }
-}
+    color: $blue;
+    border-color: $blue;
+    
+    &:hover {
+      background-color: $blue;
+      color: $white;
 
-.arrow {
-  --_line-width: 10px;
-  --_line-color: #{$orange};
-
-  grid-area: ARW;
-
-  display: grid;
-  justify-content: space-between;
-  grid-template-columns: repeat(3, 0);
-  grid-template-rows: 1fr 0 1fr;
-  grid-template-areas:
-    "1_ 1_ 1_"
-    "1_ 2_ 2_"
-    "1_ 3_ 3_";
-  height: 10rem;
-  padding-block: 1rem;
-
-  transition: grid-template-area;
-
-  .segment {
-    position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: calc(var(--_line-width) / -2);
-      border-style: solid;
-      border-color: var(--_line-color);
-      border-width: 0;
-    }
-  }
-
-  .start {
-    grid-area: o-;
-
-    &::before {
-      content: "";
-      position: absolute;
-      display: block;
-      top: 0;
-      translate: -50%;
-      width: calc(var(--_line-width) * 2.75);
-      aspect-ratio: 1;
-      background-color: var(--_line-color);
+      .h4 {
+        color: $white;
+      }
     }
 
-    &::after {
-      border-left-width: var(--_line-width);
-    }
-  }
-
-  .middle {
-    grid-area: __;
-
-    &::after {
-      top: calc(var(--_line-width) / -2);
-      left: calc(var(--_line-width) / -2);
-      right: calc(var(--_line-width) / -2);
-      border-top-width: var(--_line-width);
-    }
-  }
-
-  .end {
-    grid-area: -o;
-
-    &::before {
-      content: "";
-      position: absolute;
-      display: block;
-      bottom: 0;
-      translate: -50%;
-      width: calc(var(--_line-width) * 2.75);
-
-      border-width: calc(var(--_line-width) * 2.75)
-        calc(var(--_line-width) * 1.75) 0;
-      border-style: solid;
-      border-color: var(--_line-color) transparent transparent;
-      border-inline-color: transparent;
-      border-block-end-width: 0;
+    .h4 {
+      color: $blue;
     }
 
-    &::after {
-      bottom: calc(var(--_line-width) * 2.7);
-      border-left-width: var(--_line-width);
+    &.path-highlight {
+      background-color: $blue;
+      color: $white;
+  
+      .h2 {
+        color: $white;
+      }
     }
   }
 }
