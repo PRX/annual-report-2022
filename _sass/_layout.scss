@@ -19,7 +19,6 @@ body {
 
 .page {
   padding-top: 5rem;
-  padding-bottom: 6rem;
   min-height: 100vh;
 
   .container {
@@ -104,18 +103,5 @@ iframe {
     border-radius: 10px;
     object-fit: cover;
     object-position: center center;
-  }
-}
-
-.quote {
-  position: relative;
-}
-
-blockquote {
-  padding: 3rem;
-
-  .display-3,
-  .citation {
-    padding: 0 3rem;
   }
 }
