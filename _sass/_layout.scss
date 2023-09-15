@@ -36,19 +36,30 @@ body {
 }
 
 [data-theme="organization"] {
-  background-color: $bg-orange;
+  background-color: #fff;
+  background-size: 20px 20px;
+  background-image:  repeating-linear-gradient(to right, $bg-orange, $bg-orange 1px, #fff 1px, #fff);
 }
 
 [data-theme="creator"] {
-  background-color: $bg-red;
+  background-color: #fff;
+  background-size: 20px 20px;
+  background-image:  repeating-linear-gradient(0deg, $bg-red, $bg-red 1px, #fff 1px, #fff);
 }
 
 [data-theme="partner"] {
-  background-color: $bg-ltblue;
+  background-color: #fff;
+  background-image:  linear-gradient($bg-ltblue 2px, transparent 2px), linear-gradient(90deg, $bg-ltblue 2px, transparent 2px), linear-gradient($bg-ltblue 1px, transparent 1px), linear-gradient(90deg, $bg-ltblue 1px, #fff 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
 }
 
 [data-theme="listener"] {
-  background-color: $bg-blue;
+  background-color: #fff;
+  background-image:  linear-gradient(135deg, $bg-blue 25%, transparent 25%), linear-gradient(225deg, $bg-blue 25%, transparent 25%), linear-gradient(45deg, $bg-blue 25%, transparent 25%), linear-gradient(315deg, $bg-blue 25%, #fff 25%);
+  background-position:  10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
+  background-repeat: repeat;
 }
 
 [data-theme="grid"] {
