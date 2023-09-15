@@ -1,4 +1,4 @@
-<section id="{{ page.prx-id }}" class="scroll-bg first {{ page.prx-path }}" data-color="{{ page.prx-path }}">
+<section id="{{ page.prx-id }}" class="scroll-bg first {{ page.prx-path }}" data-path="{{ page.prx-path }}">
   <div class="container">
     <h2 class="page-heading">{{ page.title }}</h2>
     <div class="row">
@@ -12,32 +12,35 @@
         </figure>
     </div>
   </div>
-
-  <aside class="prx-choose container">
-    {% include cards/choose-card.html 
-      choose-path="partner"
-      choose-style="path-highlight"
-      link=page.partner-link
-      icon="handshake"
-      heading="PRX is for Partners"
-      description=page.partner-description
-    %}
-    {% include cards/choose-card.html 
-      choose-path="creator"
-      choose-style="path-highlight"
-      link=page.creator-link
-      icon="mic"
-      heading="PRX is for Creators"
-      description=page.creator-description
-    %}
-    {% include cards/choose-card.html 
-      choose-path="listener"
-      choose-style="path-highlight"
-      link=page.listener-link
-      icon="headphones"
-      heading="PRX is for Listeners"
-      description=page.listener-description
-    %}
-    {% include cards/arrows.html class="bottom welcome" %}
-  </aside>
 </section>
+
+<aside class="prx-choose container">
+  {% include cards/choose-card.html 
+    choose-path="partner"
+    choose-style="path-highlight"
+    data-path-target="A"
+    link=page.partner-link
+    icon="handshake"
+    heading="PRX is for Partners"
+    description=page.partner-description
+  %}
+  {% include cards/choose-card.html 
+    choose-path="creator"
+    choose-style="path-highlight"
+    data-path-target="B"
+    link=page.creator-link
+    icon="mic"
+    heading="PRX is for Creators"
+    description=page.creator-description
+  %}
+  {% include cards/choose-card.html 
+    choose-path="listener"
+    choose-style="path-highlight"
+    data-path-target="C"
+    link=page.listener-link
+    icon="headphones"
+    heading="PRX is for Listeners"
+    description=page.listener-description
+  %}
+  {% include cards/arrows.html class="bottom welcome" %}
+</aside>

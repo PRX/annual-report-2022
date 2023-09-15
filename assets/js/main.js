@@ -1,10 +1,8 @@
 // Function to handle changes in intersection
 function handleIntersection(entries, observer) {
   entries.forEach(function (entry) {
-   console.log(entry.isIntersecting);
     if (entry.isIntersecting) {
-      console.log(entry.target.getAttribute('data-color'));
-      document.body.setAttribute('data-theme', entry.target.getAttribute('data-color'));
+      document.body.setAttribute('data-theme', entry.target.getAttribute('data-path'));
     }
   });
 }
@@ -15,7 +13,7 @@ var observer = new IntersectionObserver(handleIntersection, {
 });
 
 // Select all panels with the class 'scroll-bg'
-var panels = document.querySelectorAll('[data-color]');
+var panels = document.querySelectorAll('[data-path]');
 
 // Observe each panel
 panels.forEach(function (panel) {

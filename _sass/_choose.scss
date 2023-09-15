@@ -14,15 +14,6 @@
   &:hover {
     background-color: $primary;
     color: $white;
-
-    &::after {
-      content: "Click to Choose";
-      position: absolute;
-      left: 0;
-      bottom: 2rem;
-      width: 100%;
-      text-align: center;
-    }
   }
 
   &.creator {
@@ -126,31 +117,213 @@
   }
 }
 
-@media (min-width: 992px) {
-  .prx-choose {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-areas:
-      'AS1 AS2 AS3 AS4 AS5 AS6'
-      'CD1 CD1 CD2 CD2 CD3 CD3'
-      'AE1 AE2 AE3 AE4 AE5 AE6';
-    align-items: center;
-    grid-gap: 1.5rem;
+.prx-choose {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 10rem 1fr;
+  grid-template-areas:
+    "--_ ARW ARW ARW ARW _--"
+    "AAA AAA BBB BBB CCC CCC";
+  gap: 1.5rem;
+}
+
+.card-choose {
+  position: relative;
+  display: grid;
+  border-radius: 1rem;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0 -0.5rem;
   }
 
-  .partner {
-    grid-area: CD1;
+  &[data-path-target="partner"] {
+    grid-area: AAA;
   }
 
-  .creator {
-    grid-area: CD2;
+  &[data-path-target="creator"] {
+    grid-area: BBB;
   }
 
-  .listener {
-    grid-area: CD3;
+  &[data-path-target="listener"] {
+    grid-area: CCC;
+  }
+}
+
+.arrow {
+  --_line-width: 10px;
+  --_line-color: #{$orange};
+
+  grid-area: ARW;
+
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(3, 0);
+  grid-template-rows: 1fr 0 1fr;
+  grid-template-areas:
+    "1_ 1_ 1_"
+    "1_ 2_ 2_"
+    "1_ 3_ 3_";
+  height: 10rem;
+  padding-block: 1rem;
+
+  transition: grid-template-area;
+
+  .segment {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(var(--_line-width) / -2);
+      border-style: solid;
+      border-color: var(--_line-color);
+      border-width: 0;
+    }
   }
 
-  .card[data-path="CD1"]:hover ~ .arrow-start[data-start="B"] {
-    grid-area: span AS1 / span AS3;
+  .start {
+    grid-area: o-;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      translate: -50%;
+      width: calc(var(--_line-width) * 2.75);
+      aspect-ratio: 1;
+      background-color: var(--_line-color);
+    }
+
+    &::after {
+      border-left-width: var(--_line-width);
+    }
+  }
+
+  .middle {
+    grid-area: __;
+
+    &::after {
+      top: calc(var(--_line-width) / -2);
+      left: calc(var(--_line-width) / -2);
+      right: calc(var(--_line-width) / -2);
+      border-top-width: var(--_line-width);
+    }
+  }
+
+  .end {
+    grid-area: -o;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: 0;
+      translate: -50%;
+      width: calc(var(--_line-width) * 2.75);
+
+      border-width: calc(var(--_line-width) * 2.75)
+        calc(var(--_line-width) * 1.75) 0;
+      border-style: solid;
+      border-color: var(--_line-color) transparent transparent;
+      border-inline-color: transparent;
+      border-block-end-width: 0;
+    }
+
+    &::after {
+      bottom: calc(var(--_line-width) * 2.7);
+      border-left-width: var(--_line-width);
+    }
+  }
+}
+
+// A Paths
+[data-path="partner"] {
+  & + .prx-choose {
+    .arrow,
+    [data-path-target="partner"]:hover ~ .arrow {
+      grid-template-areas:
+        "o- 1_ 1_"
+        "__ 2_ 2_"
+        "-o 3_ 3_";
+    }
+
+    [data-path-target="creator"]:hover ~ .arrow {
+      grid-template-areas:
+        "o- 1_ 1_"
+        "__ __ 2_"
+        "_3 -o 3_";
+    }
+
+    [data-path-target="listener"]:hover ~ .arrow {
+      grid-template-areas:
+        "o- 1_ 1_"
+        "__ __ __"
+        "_3 _3 -o";
+    }
+  }
+}
+
+// B Paths
+:not([data-path]),
+[data-path="organization"],
+[data-path="creator"] {
+  & + .prx-choose {
+    [data-path-target="partner"]:hover ~ .arrow {
+      grid-template-areas:
+        "_1 o- 1_"
+        "__ __ 2_"
+        "-o 3_ 3_";
+    }
+
+    .arrow,
+    [data-path-target="creator"]:hover ~ .arrow {
+      grid-template-areas:
+        "_1 o- 1_"
+        "_2 __ 2_"
+        "_3 -o 3_";
+    }
+
+    [data-path-target="listener"]:hover ~ .arrow {
+      grid-template-areas:
+        "_1 o- 1_"
+        "_2 __ __"
+        "_3 _3 -o";
+    }
+  }
+}
+
+// C Paths
+[data-path="listener"] {
+  & + .prx-choose {
+    [data-path-target="partner"]:hover ~ .arrow {
+      grid-template-areas:
+        "_1 _1 o-"
+        "__ __ __"
+        "-o 3_ 3_";
+    }
+
+    [data-path-target="creator"]:hover ~ .arrow {
+      grid-template-areas:
+        "_1 _1 o-"
+        "_2 __ __"
+        "_3 -o 3_";
+    }
+
+    .arrow,
+    [data-path-target="listener"]:hover ~ .arrow {
+      grid-template-areas:
+        "_1 _1 o-"
+        "_2 _2 __"
+        "_3 _3 -o";
+    }
   }
 }
