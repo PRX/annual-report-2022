@@ -36,19 +36,29 @@ body {
 }
 
 [data-theme="organization"] {
-  background-color: $bg-orange;
+  background-color: #fff;
+  background-size: 15rem 15rem;
+  background-image:  repeating-linear-gradient(to right, $bg-orange, $bg-orange 1px, #fff 1px, #fff);
 }
 
 [data-theme="creator"] {
-  background-color: $bg-red;
+  background-color: #fff;
+  opacity: 1;
+  background-size: 15rem 15rem;
+  background-image: repeating-linear-gradient(45deg, $bg-red 0, $bg-red 1px, #fff 0, #fff 50%);
 }
 
 [data-theme="partner"] {
-  background-color: $bg-ltblue;
+  background-color: #fff;
+  background-size: 15rem 15rem;
+  background-image: repeating-linear-gradient(135deg, $bg-ltblue 0, $bg-ltblue  1px, #fff 0, #fff 50%);
 }
 
 [data-theme="listener"] {
-  background-color: $bg-blue;
+  background-color: #fff;
+  background-image:  radial-gradient(#DFF2FA 2px, transparent 2px), radial-gradient(#DFF2FA 2px, #fff 2px);
+  background-size: 80px 80px;
+  background-position: 0 0,40px 40px;
 }
 
 [data-theme="grid"] {
