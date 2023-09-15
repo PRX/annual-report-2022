@@ -28,6 +28,7 @@
 .prx-choose {
   display: grid;
   justify-content: center;
+  padding-bottom: 6rem;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 10rem 1fr;
   grid-template-areas:
