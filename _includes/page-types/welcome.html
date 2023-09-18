@@ -1,51 +1,58 @@
-<section id="{{ page.prx-id }}" class="scroll-bg first {{ page.prx-path }}" data-path="{{ page.prx-path }}">
+<section
+  id="{{ page.prx-id }}"
+  class="scroll-bg first {{ page.prx-path }}"
+  data-path="{{ page.prx-path }}"
+>
   <div class="container">
     <h2 class="page-heading">{{ page.title }}</h2>
     <div class="row">
       <div class="col-md-8">
         {{ page.content }}
-        <img src="/assets/img/kerri-signature.svg" alt="Kerri Hoffman's signature" class="signature" />
+        <img
+          src="/assets/img/kerri-signature.svg"
+          alt="Kerri Hoffman's signature"
+          class="signature"
+        />
       </div>
       <div class="col-md-4">
         <figure class="page-image">
-          {% picture {{ page.image }} --alt {{ page.image-alt }}  %}
+          {% picture {{ page.image }} --alt {{ page.image-alt }} %}
           <p class="caption fs-6">{{ page.image-caption }}</p>
         </figure>
+      </div>
     </div>
   </div>
-</section>  
+</section>
 
 <section class="scroll-bg organization py-4" data-color="organization">
-	<div id='timeline-embed' style='width: 100%; height: 800px'></div>
+  <div id="timeline-embed" style="width: 100%; height: 800px"></div>
 </section>
 
 <aside class="scroll-bg prx-choose container" data-color="organization">
-  {% include cards/choose-card.html 
+  {% include cards/choose-card.html
     choose-path="partner"
     choose-style="path-highlight"
     data-path-target="A"
     link=page.partner-link
-    icon="handshake"
+    icon="handshake" 
     heading="PRX is for Partners"
-    description=page.partner-description
-  %}
-  {% include cards/choose-card.html 
+    description=page.partner-description 
+  %} 
+  {% include cards/choose-card.html
     choose-path="creator"
     choose-style="path-highlight"
     data-path-target="B"
-    link=page.creator-link
-    icon="mic"
+    link=page.creator-link icon="mic"
     heading="PRX is for Creators"
     description=page.creator-description
-  %}
-  {% include cards/choose-card.html 
+  %} 
+  {% include cards/choose-card.html
     choose-path="listener"
     choose-style="path-highlight"
     data-path-target="C"
-    link=page.listener-link
-    icon="headphones"
+    link=page.listener-link icon="headphones" 
     heading="PRX is for Listeners"
-    description=page.listener-description
-  %}
-  {% include cards/arrows.html class="bottom welcome" %}
+    description=page.listener-description 
+  %} 
+  {% include cards/arrows.html %}
 </aside>
