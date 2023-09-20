@@ -1,5 +1,5 @@
-<section class="scroll-bg page {{ page.prx-path }}" data-path="{{ page.prx-path }}">
-  <div id="{{ page.prx-id }}" class="container">
+<section class="scroll-bg page {{ page.prx-path }}" data-section-id="{{page.prx-id}}" data-path="{{ page.prx-path }}">
+  <div id="section-{{ page.prx-id }}" class="container">
     {%- if page.hero-title -%}  
       {% include cards/section-hero.html  %}
     {%- endif -%}
@@ -42,27 +42,37 @@
   </div>
 </section>
 
+{%- if page.partner-link or page.creator-link or page.listener-link  -%}
 <aside class="scroll-bg prx-choose container" data-path="{{ page.prx-path }}">
-  {% include cards/choose-card.html 
-    choose-path="partner"
-    link=page.partner-link
-    icon="handshake"
-    heading="Network Partners"
-    title=page.partner-title
-  %}
-  {% include cards/choose-card.html 
-    choose-path="creator"
-    link=page.creator-link
-    icon="mic"
-    heading="Creator Projects"
-    title=page.creator-title
-  %}
-  {% include cards/choose-card.html 
-    choose-path="listener"
-    link=page.listener-link
-    icon="headphones"
-    heading="Listener Lounge"
-    title=page.listener-title
-  %}
+  {%- if page.partner-link  -%}
+    {% include cards/choose-card.html 
+      choose-path="partner"
+      link=page.partner-link
+      icon="handshake"
+      heading="Network Partners"
+      title=page.partner-title
+    %}
+  {%- endif -%}
+
+  {%- if page.creator-link  -%}
+    {% include cards/choose-card.html 
+      choose-path="creator"
+      link=page.creator-link
+      icon="mic"
+      heading="Creator Projects"
+      title=page.creator-title
+    %}
+  {%- endif -%}
+
+  {%- if page.listener-link  -%}
+    {% include cards/choose-card.html 
+      choose-path="listener"
+      link=page.listener-link
+      icon="headphones"
+      heading="Listener Lounge"
+      title=page.listener-title
+    %}
+  {%- endif -%}
   {% include cards/arrows.html %}
 </aside>
+{%- endif -%}
