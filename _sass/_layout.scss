@@ -68,16 +68,12 @@ body {
     min-height: auto;
   }
 
-  .prx-choose + &:not([data-path="organization"]) {
+  .js-on .prx-choose:is([data-path-selected]) + &:not([data-path="organization"]) {
     opacity: 0;
-    
-    &.js-show {
-      animation: fade-in-up 300ms ease-out forwards;
-    }
-  }
 
-  .prx-choose[data-path-selected] &.js-show {
-    animation: fade-in 300ms linear forwards;
+    &.js-show {
+      animation: fade-in 300ms linear forwards;
+    }
   }
 }
 

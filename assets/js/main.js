@@ -1,4 +1,6 @@
 (() => {
+  document.documentElement.classList.add('js-on');
+
   window.setTimeout(() => {
     window.scroll({ top: 0, behavior: 'instant' });
   }, 300);
@@ -153,8 +155,6 @@
     const linkId = linkElement.getAttribute('href');
     const id = linkId.match(/#section-([\w-]+)/)[1];
 
-    console.log(id);
-
     appendSectionContent(id, linkElement.parentElement);
   }
 
@@ -166,15 +166,19 @@
     let newMenu = menu.cloneNode(true);
     const hasSelectedPath = !!menuElement.dataset.pathSelected;
 
-    pathsProgress.set(path, pathsProgress.get(path) + 1);
-
     // Check if section exists after the menu.
     while (menuElement.nextElementSibling.getAttribute('data-section-id')) {
       // Remove existing menu.
       menuElement.nextElementSibling.nextElementSibling.remove();
-      // Remove existing section.
+
+      // Remove existing section after updating its path progress.
+      const nextSiblingPath = menuElement.nextElementSibling.dataset.path;
+      pathsProgress.set(nextSiblingPath, pathsProgress.get(nextSiblingPath) - 1);
       menuElement.nextElementSibling.remove();
     }
+
+    // Increment the new section's path progress.
+    pathsProgress.set(path, pathsProgress.get(path) + 1);
 
     // Update menu links based on each paths progress.
     const completedPaths = [];
@@ -242,7 +246,7 @@
 
   // Create an Intersection Observer
   const sectionObserver = new IntersectionObserver(handleSectionIntersection, {
-    //threshold: 0.33, // Trigger when 33% of the target is visible
+    threshold: 0.25, // Trigger when 33% of the target is visible
   });
 
   // Select all panels with the class 'scroll-bg'
@@ -290,5 +294,17 @@
       menu.appendChild(target);
       menuObserver.observe(target);
     });
+  }
+
+  function buildThresholdList(numSteps = 20) {
+    const thresholds = [];
+  
+    for (let i = 1.0; i <= numSteps; i++) {
+      const ratio = i / numSteps;
+      thresholds.push(ratio);
+    }
+  
+    thresholds.push(0);
+    return thresholds;
   }
 })();
