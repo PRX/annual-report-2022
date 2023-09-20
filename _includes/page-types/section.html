@@ -74,5 +74,20 @@
     %}
   {%- endif -%}
   {% include cards/arrows.html %}
+  {% include cards/completed-card.html 
+    choose-path="partner"
+    icon="handshake"
+    heading="Network Partners"
+  %}
+  {% include cards/completed-card.html 
+    choose-path="creator"
+    icon="mic"
+    heading="Creator Projects"
+  %}
+  {% include cards/completed-card.html 
+    choose-path="listener"
+    icon="headphones"
+    heading="Listener Lounge"
+  %}
 </aside>
 {%- endif -%}

@@ -46,8 +46,14 @@
   document.addEventListener('mousemove', detectMouseMove, { once: true });
 
   /////// Initialize Section Content.
+  const PATH_KEYS = new Set(['partner', 'creator', 'listener']);
   const content = new Map();
   const paths = new Map();
+  const pathsProgress = new Map();
+
+  [...PATH_KEYS].forEach((pathKey) => {
+    pathsProgress.set(pathKey, 0);
+  });
 
   // Find all the dynamic section elements.
   const sections = document.querySelectorAll("[data-section-id]");
@@ -59,10 +65,12 @@
     const menu = section.nextElementSibling?.classList.contains("prx-choose")
       ? section.nextElementSibling
       : null;
+    const sectionContent = content.get(id);
 
     section.querySelector('[id]').removeAttribute('id');
 
     content.set(id, {
+      ...sectionContent,
       id,
       path,
       section,
@@ -75,11 +83,41 @@
 
     paths.get(path).add(id);
 
+    if (menu) {
+      const links = menu.querySelectorAll('a');
+
+      links.forEach((link) => {
+        const href = link.getAttribute('href');
+        const id = href.match(/#section-([\w-]+)/)[1];
+        const linkSection = content.get(id);
+
+        console.log(href, id, link, linkSection);
+
+        content.set(id, {
+          ...linkSection,
+          link
+        });
+      })
+    }
+
     section.remove();
     menu.remove();
   });
 
-  console.log(content, paths);
+  // Initialize intro menu.
+  const introMenu = document.querySelector('.prx-choose');
+  [...PATH_KEYS].forEach((pathKey) => {
+    const pathIds = paths.get(pathKey);
+    const nextPathSectionId = [...(pathIds || [])][0];
+    const menuLink = introMenu.querySelector(`[data-path-target="${pathKey}"]`);
+
+    console.log(pathKey, nextPathSectionId)
+
+    menuLink?.setAttribute('href', `#section-${nextPathSectionId}`);
+  });
+
+
+  console.log(content, paths, pathsProgress);
 
   //// Initialize section selection.
   function initSectionLink(element) {
@@ -87,6 +125,8 @@
   }
 
   function initChooseMenu(menuElement) {
+    if (!menuElement) return;
+
     const links = menuElement.querySelectorAll('[href][data-path-target]');
 
     if (menuObserver) {
@@ -123,8 +163,10 @@
     const contentData = content.get(id);
     const { section, menu, path } = contentData;
     const newSection = section.cloneNode(true);
-    const newMenu = menu.cloneNode(true);
+    let newMenu = menu.cloneNode(true);
     const hasSelectedPath = !!menuElement.dataset.pathSelected;
+
+    pathsProgress.set(path, pathsProgress.get(path) + 1);
 
     // Check if section exists after the menu.
     while (menuElement.nextElementSibling.getAttribute('data-section-id')) {
@@ -134,12 +176,38 @@
       menuElement.nextElementSibling.remove();
     }
 
+    // Update menu links based on each paths progress.
+    const completedPaths = [];
+    [...PATH_KEYS].forEach((pathKey) => {
+      const pathIds = paths.get(pathKey);
+      const pathProgress = pathsProgress.get(pathKey);
+      const nextPathSectionId = [...(pathIds || [])][pathProgress];
+      const nextPathLink = content.get(nextPathSectionId)?.link.cloneNode(true);
+      const menuLink = newMenu.querySelector(`[data-path-target="${pathKey}"]`);
+
+      console.log(pathKey, pathProgress, nextPathSectionId, nextPathLink, menuLink)
+
+      if (nextPathLink) {
+        menuLink?.replaceWith(nextPathLink);
+      } else {
+        completedPaths.push(pathKey);
+        menuLink?.remove();
+      }
+    });
+
+    if (completedPaths.length && completedPaths.length < PATH_KEYS.size) {
+      newMenu.setAttribute('data-paths-completed', completedPaths.join(' '));
+    } else if (completedPaths.length >= PATH_KEYS.size) {
+      newMenu = null;
+    }
+
     // Add selected section
     initChooseMenu(newMenu);
-    menuElement.after(...[newSection, newMenu]);
+    menuElement.after(newSection, ...(newMenu ? [newMenu] : []));
     menuElement.setAttribute('data-path-selected', path);
 
     if (!hasSelectedPath) {
+      // When menu hasn't had a selection yet, wait for height transition do show section.
       function handleFadeInUpEnd(event) {
         console.log(event);
         if (event.propertyName === 'min-height') {
@@ -149,6 +217,7 @@
       }
       menuElement.addEventListener('transitionend', handleFadeInUpEnd);
     } else {
+      // Otherwise, show section immediately.
       newSection.classList.add('js-show');
     }
 
@@ -190,7 +259,10 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           const menu = entry.target.parentElement;
-          const sectionLink = menu.querySelector(`[data-path-target="${scrollPath}"]`);
+          const sectionLink = menu.querySelector(`[data-path-target="${scrollPath}"][href]`);
+
+          if (!sectionLink) return;
+
           const linkHref = sectionLink.getAttribute('href');
           const id = linkHref.match(/#section-([\w-]+)/)[1];
 

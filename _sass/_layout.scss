@@ -58,7 +58,6 @@ body {
 
 .page {
   padding-top: 5rem;
-  min-height: 100vh;
 
   .container {
     padding-top: 1rem;
@@ -69,7 +68,7 @@ body {
     min-height: auto;
   }
 
-  .prx-choose + & {
+  .prx-choose + &:not([data-path="organization"]) {
     opacity: 0;
     
     &.js-show {

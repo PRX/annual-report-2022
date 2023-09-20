@@ -51,13 +51,16 @@
       height: 0;
       width: 100%;
       bottom: 20vh;
-      outline: 1px solid red;
     }
   }
 }
 
 .card-choose {
   $border-width: 5px;
+
+  --_path-color: #{$primary};
+  --_text-color: #{$primary};
+  --_text-contrast-color: #{$white};
 
   align-self: stretch;
   position: relative;
@@ -66,10 +69,10 @@
   align-content: start;
   text-decoration: none;
 
-  border: $border-width solid $primary;
+  border: $border-width solid var(--_path-color);
   background-image: none;
-  color: inherit;
-  transition: scale .5s ease-in-out; 
+  color: var(--_text-color);
+  transition: scale 0.5s ease-in-out;
 
   cursor: pointer;
 
@@ -103,98 +106,100 @@
   }
 
   &:active {
-    transform: scale(0.98); 
+    transform: scale(0.98);
   }
 
-  &:hover {
-    background-color: $primary;
-    color: $white;
+  &:hover,
+  &.completed {
+    background-color: var(--_path-color);
+    color: var(--_text-contrast-color);
+  }
+
+  &.path-highlight {
+    background-color: var(--_path-color);
+    color: var(--_text-contrast-color);
+
+    .h2 {
+      color: var(--_text-contrast-color);
+    }
+
+    .icon-bg {
+      .material-icons {
+        color: var(--_text-contrast-color);
+      }
+    }
   }
 
   &[data-path-target="partner"] {
     grid-area: AAA;
-    border-color: $ltblue;
-    color: $gray-800;
-    
-    &:hover {
-      background-color: $ltblue;
-      color: $black;
-    }
-
-    &.path-highlight {
-      background-color: $ltblue;
-      color: $dark-blue;
-  
-      .icon-bg {
-        .material-icons {color: $white;}
-      }
-    }
+    --_path-color: #{$ltblue};
+    --_text-color: #{$gray-800};
+    --_text-contrast-color: #{$gray-800};
 
     [data-scroll-path="partner"] :not([data-path-selected]) > & {
-      background-color: $ltblue;
-      color: $black;
+      background-color: var(--_path-color);
+      color: var(--_text-contrast-color);
 
       .cta {
         display: grid;
       }
+    }
+
+    & ~ &.completed {
+      display: none;
     }
   }
 
   &[data-path-target="creator"] {
     grid-area: BBB;
-    color: $red;
-    border-color: $red;
-      
-    &:hover {
-      background-color: $red;
-      color: $white;
-    }
-
-    &.path-highlight {
-      background-color: $red;
-      color: $white;
-  
-      .h2 {
-        color: $white;
-      }
-    }
+    --_path-color: #{$red};
+    --_text-color: #{$red};
 
     [data-scroll-path="creator"] :not([data-path-selected]) > & {
-      background-color: $red;
-      color: $white;
+      background-color: var(--_path-color);
+      color: var(--_text-contrast-color);
 
       .cta {
         display: grid;
       }
+    }
+
+    & ~ &.completed {
+      display: none;
     }
   }
 
   &[data-path-target="listener"] {
     grid-area: CCC;
-    color: $blue;
-    border-color: $blue;
-    
-    &:hover {
-      background-color: $blue;
-      color: $white;
-    }
-
-    &.path-highlight {
-      background-color: $blue;
-      color: $white;
-  
-      .h2 {
-        color: $white;
-      }
-    }
+    --_path-color: #{$blue};
+    --_text-color: #{$blue};
 
     [data-scroll-path="listener"] :not([data-path-selected]) > & {
-      background-color: $blue;
-      color: $white;
-      
+      background-color: var(--_path-color);
+      color: var(--_text-contrast-color);
+
       .cta {
         display: grid;
       }
+    }
+
+    & ~ &.completed {
+      display: none;
+    }
+  }
+
+  &.completed {
+    align-self: start;
+
+    .card-description {
+      font-size: 3rem;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .cta {
+      display: none !important;
     }
   }
 }
