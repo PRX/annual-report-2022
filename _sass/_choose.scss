@@ -42,7 +42,8 @@
     min-height: 120vh;
     transition: min-height $choose-select-transition-duration ease-out;
 
-    &[data-path-selected] {
+    &[data-path-selected],
+    &[data-paths-completed="partner creator listener"] {
       min-height: 0vh;
     }
 

@@ -199,10 +199,8 @@
       }
     });
 
-    if (completedPaths.length && completedPaths.length < PATH_KEYS.size) {
+    if (completedPaths.length) {
       newMenu.setAttribute('data-paths-completed', completedPaths.join(' '));
-    } else if (completedPaths.length >= PATH_KEYS.size) {
-      newMenu = null;
     }
 
     // Add selected section
