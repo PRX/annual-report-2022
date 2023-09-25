@@ -175,9 +175,9 @@
     grid-row: 2;
     border-right: 5px solid $orange;
     position: absolute;
-    right: 12px;
-    bottom: -11px;
-    height: 2rem;
+    right: 0;
+    bottom: -2rem;
+    height: 3rem;
 
     &:after {
       content: "";

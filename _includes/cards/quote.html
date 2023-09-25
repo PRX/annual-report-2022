@@ -18,10 +18,15 @@
   </div>
 </div>  
 {% else %}
-<div class="row quote">  
-  <blockquote>
+<blockquote class="quote row">
+  <div class="col-md-10">
     <div class="display-3">{{ page.quote }}</div>
-    {%- if page.quote-citation -%}<footer class="citation">&mdash;{{ page.quote-citation }}</footer>{%- endif -%}
-  </blockquote>
-</div>  
+    {%- if page.quote-citation -%}
+    <footer class="citation">&mdash;{{ page.quote-citation }}</footer>
+    {%- endif -%}
+  </div>
+  <div class="col-md-2 quote-bg quote-text d-flex align-items-center justify-content-center">
+    <p class="display-1" aria-label="hidden">&rdquo;</p>
+  </div>
+</blockquote>
 {%- endif -%}

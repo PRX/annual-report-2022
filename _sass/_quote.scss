@@ -32,3 +32,17 @@ blockquote {
     }
   }
 }
+
+.quote {
+  .display-1 {
+    font-size: 6rem;
+    text-align: center;
+  }
+}
+
+.quote-bg {
+  background-image: url("/assets/img/logo-b4-vector-dark.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 160px 139px;
+}
