@@ -16,3 +16,16 @@ permalink: /
 {% for page in pages %}
   {% include page-types/section.html  %}
 {% endfor %}
+
+{% assign pages = site.pages | where_exp: "page", "page.type contains 'footer'" | sort: "order" %}
+{% for page in pages %}
+  {% include page-types/footer-section.html  %}
+{% endfor %}
+
+<div class="bg-paths">
+  <div class="container paths">
+    <div data-path="partner"></div>
+    <div data-path="creator"></div>
+    <div data-path="listener"></div>
+  </div>
+</div>

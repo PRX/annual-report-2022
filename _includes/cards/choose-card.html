@@ -1,4 +1,4 @@
-<a href="#{{ include.link }}" class="card card-choose {{ include.choose-path }} {{ include.choose-style }}" data-path-target="{{ include.choose-path }}">
+<a href="#section-{{ include.link }}" class="card card-choose {{ include.choose-path }} {{ include.choose-style }}" data-path-target="{{ include.choose-path }}">
 	{%- if include.description -%}
 	<div class="icon-bg"><span class="material-icons">{{ include.icon }}</span></div>  
 	<div class="card-body card-descriptive-text d-flex justify-content-center flex-column">  
@@ -15,7 +15,15 @@
       <span class="material-icons me-2">{{ include.icon }}</span>
       {{ include.heading }}
     </div>
-    <div>{{ include.title }}</div>
+    <div class="description">{{ include.title }}</div>
   </div>
 	{%- endif -%}
+  <div class="cta">
+    <div class="cta-content">
+      <span class="message">Scroll to choose</span>
+      <svg width="31" height="38" viewBox="0 0 31 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.4393 36.5626C15.0251 37.1484 15.9749 37.1484 16.5607 36.5626L26.1066 27.0167C26.6924 26.4309 26.6924 25.4811 26.1066 24.8954C25.5208 24.3096 24.5711 24.3096 23.9853 24.8954L15.5 33.3806L7.01472 24.8954C6.42893 24.3096 5.47918 24.3096 4.8934 24.8954C4.30761 25.4811 4.30761 26.4309 4.8934 27.0167L14.4393 36.5626ZM14 0.00195306L14 35.502L17 35.502L17 0.00195319L14 0.00195306Z" fill="currentColor"/>
+      </svg>
+    </div>
+  </div>
 </a>
