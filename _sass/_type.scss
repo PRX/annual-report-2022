@@ -9,6 +9,7 @@
   background-image: url(/assets/img/heading.svg);
   background-repeat: no-repeat;
   padding-left: 55px;
+  padding-right: 55px;
   font-weight: 900;
   margin-bottom: 2rem;
   margin-top: 1.25rem;
@@ -34,8 +35,15 @@
 .display-3 {
   font-family: $header-font-family;
   font-weight: bold;
-  font-size: 1.5rem;
-  line-height: 1.25;
+  font-size: 1.35rem;
+  line-height: 1.5;
   margin: 0;
   color: $dark-blue;
+}
+
+.content {
+  p {
+    font-size: 1.35rem;
+    line-height: 1.5;
+  }
 }

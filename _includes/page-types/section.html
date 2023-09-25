@@ -6,23 +6,19 @@
 
     <h3 class="h2 page-heading">{{ page.title }}</h3>
     
-    <div class="row">
-      <div class="col-md-8">
-        {%- if page.audio -%}
-          {% include cards/audio.html  %}
-        {%- endif -%}
-        
-        {{ page.content }}
-      </div>
-      <div class="col-md-4">
-        {%- if page.video -%}
-          {{ page.video }}
-        {% elsif page.image  %}  
-          {% include cards/image.html  %}
-        {%- endif -%}
+    <div class="prx-content">
+      <div class="content-arrow-down"></div>    
+      <div class="content">
+      {{ page.content }}
+
+      {%- if page.video -%}
+        {{ page.video }}
+      {% elsif page.image  %}  
+        {% include cards/image.html  %}
+      {%- endif -%}
       </div>
     </div>
-
+    
     {%- if page.quote -%}
       {% include cards/quote.html  %}
     {%- endif -%}
