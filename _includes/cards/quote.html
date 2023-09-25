@@ -5,15 +5,16 @@
     {%- if page.quote-citation -%}<footer class="citation">&mdash;{{ page.quote-citation }}</footer>{%- endif -%}
   </blockquote>
 
-  <div class="quote-image d-flex align-items-center g-col-md-4">
-    <figure class="quote-image">
+  <div class="quote-image-wrapper">
+    <div class="quote-arrow">
+      <div class="quote-arrow-start"></div>
+      <div class="quote-arrow-end"></div>
+    </div>
+
+    <figure class="quote-image m-0 p-0">
       {% picture {{ page.quote-image }} --alt {{ page.quote-image-alt }}  %}
     </figure>
-  </div>
 
-  <div class="arrow-container quote-arrow">
-    <div class="arrow-tall"></div>
-    <div class="arrow-long"></div>
   </div>
 </div>  
 {% else %}
