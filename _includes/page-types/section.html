@@ -35,6 +35,33 @@
       <p><em>{{ page.donor-credit }}</em></p>
     {%- endif -%}
 
+    <div class="row recommendations">
+      {%- if page.recommendation-1 -%}
+      <h4 class="display-3 my-4">If you like <em>{{ page.nav-title }}</em>, you may also like:</h4>
+      {% include cards/recommendations.html  
+        title=page.recommendation-1
+        link=page.recommendation-1-link
+        image=page.recommendation-1-image
+      %}
+      {%- endif -%}
+
+      {%- if page.recommendation-2 -%}
+      {% include cards/recommendations.html  
+        title=page.recommendation-2
+        link=page.recommendation-2-link
+        image=page.recommendation-2-image
+      %}
+      {%- endif -%}
+
+      {%- if page.recommendation-3 -%}
+      {% include cards/recommendations.html  
+        title=page.recommendation-3
+        link=page.recommendation-3-link
+        image=page.recommendation-3-image
+      %}
+      {%- endif -%}
+    </div>
+
   </div>
 </section>
 

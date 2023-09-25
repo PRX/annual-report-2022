@@ -1,0 +1,14 @@
+.recommendations {
+	position: relative;
+}
+
+.recommendation-item {
+	text-align: center;
+	margin-top: 2rem;
+	margin-bottom: 3rem;
+
+	img {
+		max-width: 200px;
+		height: auto;
+	}
+}
