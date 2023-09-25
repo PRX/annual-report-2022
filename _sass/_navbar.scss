@@ -66,8 +66,8 @@
 .prx-listener {
   .accordion-button, 
   .nav-link {
-    background-color: $ltblue;
-    color: $black;
+    background-color: $blue;
+    color: $white;
 
     &.collapsed::after {
       @include black-chevron();
@@ -90,8 +90,8 @@
 .prx-partner {
   .accordion-button, 
   .nav-link {
-    background-color: $blue;
-    color: $white;
+    background-color: $ltblue;
+    color: $black;
 
     &.collapsed::after {
       @include white-chevron();

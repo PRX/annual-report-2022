@@ -1,12 +1,9 @@
 (() => {
   document.documentElement.classList.add('js-on');
 
-  window.setTimeout(() => {
-    window.scroll({ top: 0, behavior: 'instant' });
-  }, 300);
-
   let useScrollSelection = false;
   let scrollPath;
+  let disableScrollPathLoad = false;
   let menuObserver;
 
   const centerRectQuery = '[data-path-target="creator"]';
@@ -15,8 +12,6 @@
   // Detect user interaction type.
   function detectMouseMove() {
     useScrollSelection = true;
-
-    console.log('this should stop');
 
     document.documentElement.classList.add('js-mouse');
 
@@ -93,8 +88,6 @@
         const id = href.match(/#section-([\w-]+)/)[1];
         const linkSection = content.get(id);
 
-        console.log(href, id, link, linkSection);
-
         content.set(id, {
           ...linkSection,
           link
@@ -113,13 +106,8 @@
     const nextPathSectionId = [...(pathIds || [])][0];
     const menuLink = introMenu.querySelector(`[data-path-target="${pathKey}"]`);
 
-    console.log(pathKey, nextPathSectionId)
-
     menuLink?.setAttribute('href', `#section-${nextPathSectionId}`);
   });
-
-
-  console.log(content, paths, pathsProgress);
 
   //// Initialize section selection.
   function initSectionLink(element) {
@@ -146,8 +134,6 @@
   function handleSectionLinkClick(event) {
     event.preventDefault();
 
-    console.log(event);
-
     let linkElement = event.target.closest('[href]');
 
     if (!linkElement) return;
@@ -159,12 +145,12 @@
   }
 
 
-  function appendSectionContent(id, menuElement) {
+  function appendSectionContent(id, menuElement, noCssTransition) {
     const contentData = content.get(id);
     const { section, menu, path } = contentData;
     const newSection = section.cloneNode(true);
     let newMenu = menu.cloneNode(true);
-    const hasSelectedPath = !!menuElement.dataset.pathSelected;
+    const hasPathSelected = menuElement.hasAttribute('data-path-selected');
 
     // Check if section exists after the menu.
     while (menuElement.nextElementSibling.getAttribute('data-section-id')) {
@@ -189,8 +175,6 @@
       const nextPathLink = content.get(nextPathSectionId)?.link.cloneNode(true);
       const menuLink = newMenu.querySelector(`[data-path-target="${pathKey}"]`);
 
-      console.log(pathKey, pathProgress, nextPathSectionId, nextPathLink, menuLink)
-
       if (nextPathLink) {
         menuLink?.replaceWith(nextPathLink);
       } else {
@@ -205,13 +189,20 @@
 
     // Add selected section
     initChooseMenu(newMenu);
-    menuElement.after(newSection, ...(newMenu ? [newMenu] : []));
-    menuElement.setAttribute('data-path-selected', path);
 
-    if (!hasSelectedPath) {
+    const scrollTarget = menuElement.querySelector('.scroll-target');
+    if (menuObserver && scrollTarget) {
+      menuObserver.unobserve(scrollTarget);
+      scrollTarget.remove();
+    }
+
+    if (noCssTransition) {
+      menuElement.classList.add('js-no-animation');
+      newSection.classList.add('js-no-animation');
+      newSection.classList.add('js-show');
+    } else if (!hasPathSelected) {
       // When menu hasn't had a selection yet, wait for height transition do show section.
       function handleFadeInUpEnd(event) {
-        console.log(event);
         if (event.propertyName === 'min-height') {
           newSection.classList.add('js-show');
           menuElement.removeEventListener('animationend', handleFadeInUpEnd);
@@ -223,10 +214,106 @@
       newSection.classList.add('js-show');
     }
 
+    menuElement.setAttribute('data-path-selected', path);
+    menuElement.after(newSection, ...(newMenu ? [newMenu] : []));
+
     sectionObserver.observe(newSection);
+
+    return newMenu;
+  }
+
+  function appendPathContent(path) {
+    const ids = paths.get(path);
+    let currentMenu = introMenu;
+
+    [...ids].forEach((id) => {
+      currentMenu = appendSectionContent(id, currentMenu, true);
+    })
   }
 
   document.querySelectorAll('.prx-choose').forEach(menu => initChooseMenu(menu));
+
+  /// Initialize Nav Menu Links.
+
+  function scrollToSection(id) {
+    let sectionElement = document.querySelector(`[data-section-id="${id}"]`);
+    const section = content.get(id);
+    const path = section.path;
+
+    if (!sectionElement) {
+      appendPathContent(path);
+      sectionElement = document.querySelector(`[data-section-id="${id}"]`);
+    }
+
+    sectionElement.scrollIntoView();
+  }
+
+  function scrollToAnchorTarget(id) {
+    if (!id) return;
+
+    const targetElement = document.getElementById(id);
+
+    if (!targetElement) return;
+
+    disableScrollPathLoad = true;
+
+    targetElement.scrollIntoView();
+  }
+
+  function handleSectionNavLinkClick(event) {
+    event.preventDefault();
+
+    let linkElement = event.target.closest('[href]');
+
+    if (!linkElement) return;
+
+    const href = linkElement.getAttribute('href');
+    const id = href.match(/^#section-([\w-]+)/)[1];
+
+    scrollToSection(id);
+  }
+
+  function handleAnchorNavLinkClick(event) {
+    event.preventDefault();
+
+    let linkElement = event.target.closest('[href]');
+
+    if (!linkElement) return;
+
+    const href = linkElement.getAttribute('href');
+    const id = href.match(/^#([\w-]+)/)?.[1];
+
+    scrollToAnchorTarget(id)
+  }
+
+  function handleUrlHashChange(event) {
+    event.preventDefault();
+
+    const hash = location.hash;
+    const id = hash.match(/#section-([\w-]+)/)?.[1];
+
+    if (id) {
+      scrollToSection(id);
+    }
+  }
+
+  const sectionNavLinks = document.querySelectorAll('a.nav-link[href][data-path]');
+
+  sectionNavLinks.forEach((link) => {
+    link.addEventListener('click', handleSectionNavLinkClick);
+  });
+
+  const anchorNavLinks = document.querySelectorAll('a.nav-link[href]:not([data-path])');
+
+  anchorNavLinks.forEach((link) => {
+    link.addEventListener('click', handleAnchorNavLinkClick);
+  });
+
+  window.addEventListener('hashchange', handleUrlHashChange);
+
+  window.addEventListener('scrollend', () => {
+    disableScrollPathLoad = false;
+  });
 
   //// Initialize scroll events.
 
@@ -259,18 +346,15 @@
     // Function to handle changes in intersection
     function handleMenuIntersection(entries, observer) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.rootBounds) {
           const menu = entry.target.parentElement;
           const sectionLink = menu.querySelector(`[data-path-target="${scrollPath}"][href]`);
+          const fromBottom = entry.boundingClientRect.bottom > entry.rootBounds.height / 2;
 
-          if (!sectionLink) return;
+          if (!sectionLink || disableScrollPathLoad || !fromBottom) return;
 
           const linkHref = sectionLink.getAttribute('href');
           const id = linkHref.match(/#section-([\w-]+)/)[1];
-
-          observer.unobserve(entry.target);
-
-          entry.target.remove();
 
           appendSectionContent(id, menu);
         }
@@ -287,6 +371,8 @@
   
     // Observe each panel
     chooseMenus.forEach(function (menu) {
+      if (menu.hasAttribute('data-path-selected')) return;
+
       const target = document.createElement('div');
       target.classList.add('scroll-target');
       menu.appendChild(target);
@@ -304,5 +390,15 @@
   
     thresholds.push(0);
     return thresholds;
+  }
+
+  //// Handle URL's with hash.
+  if (location.hash) {
+    const hash = location.hash;
+    const id = hash.match(/#section-([\w-]+)/)?.[1];
+
+    if (id) {
+      scrollToSection(id);
+    }
   }
 })();

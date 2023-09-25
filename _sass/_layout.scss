@@ -27,7 +27,6 @@ body {
     [data-path] {
       opacity: 0;
       transition: opacity 300ms linear;
-      filter: blur(0.25rem);
     }
 
     [data-path="partner"] {
@@ -71,44 +70,18 @@ body {
   .js-on .prx-choose:is([data-path-selected]) + &:not([data-path="organization"]) {
     opacity: 0;
 
-    &.js-show {
-      animation: fade-in 300ms linear forwards;
+    &.js-show:not(.js-no-animation) {
+      animation: fade-in 300ms ease forwards;
+    }
+
+    &.js-show.js-no-animation {
+      opacity: 1;
     }
   }
 }
 
 .infographic {
   margin-bottom: 2rem;
-}
-
-[data-theme="organization"] {
-  background-color: #fff;
-  background-size: 15rem 15rem;
-  background-image:  repeating-linear-gradient(to right, $bg-orange, $bg-orange 1px, #fff 1px, #fff);
-}
-
-// [data-theme="creator"] {
-//   background-color: #fff;
-//   opacity: 1;
-//   background-size: 15rem 15rem;
-//   background-image: repeating-linear-gradient(45deg, $bg-red 0, $bg-red 1px, #fff 0, #fff 50%);
-// }
-
-// [data-theme="partner"] {
-//   background-color: #fff;
-//   background-size: 15rem 15rem;
-//   background-image: repeating-linear-gradient(135deg, $bg-ltblue 0, $bg-ltblue  1px, #fff 0, #fff 50%);
-// }
-
-// [data-theme="listener"] {
-//   background-color: #fff;
-//   background-image:  radial-gradient(#DFF2FA 2px, transparent 2px), radial-gradient(#DFF2FA 2px, #fff 2px);
-//   background-size: 80px 80px;
-//   background-position: 0 0,40px 40px;
-// }
-
-[data-theme="grid"] {
-  background-color: $white;
 }
 
 img {

@@ -40,7 +40,10 @@
 
   .js-mouse & {
     min-height: 120vh;
-    transition: min-height $choose-select-transition-duration ease-out;
+
+    &:not(.js-no-animation) {
+      transition: min-height $choose-select-transition-duration ease;
+    }
 
     &[data-path-selected],
     &[data-paths-completed="partner creator listener"] {
