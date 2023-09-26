@@ -1,5 +1,26 @@
-<div class="col-4 recommendation-item">
-	<a href="{{ include.link }}">
-		<img src="{{ include.image }}" alt="Logo of {{ include.title }}" title="{{ include.title }}" width="150" height="150" />
-	</a>
+<div class="row recommendations">     
+	<h4 class="display-3 my-4">If you like <em>{{ page.recommendation-name }}</em>, you may also like:</h4>
+	{%- if page.recommendation-1 -%}
+	{% include cards/recommendation-item.html  
+		title=page.recommendation-1
+		link=page.recommendation-1-link
+		image=page.recommendation-1-image
+	%}
+	{%- endif -%}
+
+	{%- if page.recommendation-2 -%}
+	{% include cards/recommendation-item.html  
+		title=page.recommendation-2
+		link=page.recommendation-2-link
+		image=page.recommendation-2-image
+	%}
+	{%- endif -%}
+
+	{%- if page.recommendation-3 -%}
+	{% include cards/recommendation-item.html  
+		title=page.recommendation-3
+		link=page.recommendation-3-link
+		image=page.recommendation-3-image
+	%}
+	{%- endif -%}
 </div>
