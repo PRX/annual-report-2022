@@ -18,6 +18,11 @@
   flex-direction: column;
   text-align: center;
   height: 60vh;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 
   &.creator {
     background-color: $red;
