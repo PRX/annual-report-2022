@@ -5,9 +5,14 @@ html {
 body {
   color: #000;
   transition: background-color 1s ease;
+  
+  width: 100%;
+  min-height: 100vh;
+}
+
+@media (min-width: 768px) {
   display: grid;
   grid-template-columns: 50px 1fr;
-  min-height: 100vh;
 }
 
 .bg-paths {

@@ -9,11 +9,14 @@
   background-image: url(/assets/img/heading.svg);
   background-repeat: no-repeat;
   padding-left: 55px;
-  padding-right: 55px;
   font-weight: 900;
   margin-bottom: 2rem;
   margin-top: 1.25rem;
   color: $dark-blue;
+
+  @media (min-width: 768px) {
+    padding-right: 55px;
+  }
 }
 
 .display-1 {
