@@ -5,21 +5,64 @@ html {
 body {
   color: #000;
   transition: background-color 1s ease;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 50px 1fr;
+  }
 }
 
-.nav-container {
-  width: 50px;
-  height: 100vh;
-}
 
-.content-container {
-  width: calc( 100% - 50px );
+
+.bg-paths {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+
+  .paths {
+    grid-column: 2;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1.5rem;
+
+    [data-path] {
+      opacity: 0;
+      transition: opacity 300ms linear;
+    }
+
+    [data-path="partner"] {
+      background-color: $ltblue;
+
+      [data-theme="partner"] & {
+        opacity: 0.1;
+      }
+    }
+
+    [data-path="creator"] {
+      background-color: $red;
+
+      [data-theme="creator"] & {
+        opacity: 0.1;
+      }
+    }
+
+    [data-path="listener"] {
+      background-color: $blue;
+
+      [data-theme="listener"] & {
+        opacity: 0.1;
+      }
+    }
+  }
 }
 
 .page {
   padding-top: 5rem;
-  min-height: 100vh;
 
   .container {
     padding-top: 1rem;
@@ -29,40 +72,22 @@ body {
     padding-top: 0;
     min-height: auto;
   }
+
+  .js-on .prx-choose:is([data-path-selected]) + &:not([data-path="organization"]) {
+    opacity: 0;
+
+    &.js-show:not(.js-no-animation) {
+      animation: fade-in 300ms ease forwards;
+    }
+
+    &.js-show.js-no-animation {
+      opacity: 1;
+    }
+  }
 }
 
 .infographic {
   margin-bottom: 2rem;
-}
-
-[data-theme="organization"] {
-  background-color: #fff;
-  background-size: 15rem 15rem;
-  background-image:  repeating-linear-gradient(to right, $bg-orange, $bg-orange 1px, #fff 1px, #fff);
-}
-
-[data-theme="creator"] {
-  background-color: #fff;
-  opacity: 1;
-  background-size: 15rem 15rem;
-  background-image: repeating-linear-gradient(45deg, $bg-red 0, $bg-red 1px, #fff 0, #fff 50%);
-}
-
-[data-theme="partner"] {
-  background-color: #fff;
-  background-size: 15rem 15rem;
-  background-image: repeating-linear-gradient(135deg, $bg-ltblue 0, $bg-ltblue  1px, #fff 0, #fff 50%);
-}
-
-[data-theme="listener"] {
-  background-color: #fff;
-  background-image:  radial-gradient(#DFF2FA 2px, transparent 2px), radial-gradient(#DFF2FA 2px, #fff 2px);
-  background-size: 80px 80px;
-  background-position: 0 0,40px 40px;
-}
-
-[data-theme="grid"] {
-  background-color: $white;
 }
 
 img {
@@ -81,8 +106,9 @@ audio {
 
 iframe {
  	aspect-ratio: 16 / 9;
-	height: 100%;
+	height: auto;
 	width: 100%; 
+  margin-top: 1rem;
 }
 
 .citation {

@@ -26,119 +26,203 @@
 }
 
 .prx-choose {
+  position: relative;
   display: grid;
   justify-content: center;
-  padding-bottom: 6rem;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 10rem 1fr;
+  grid-auto-rows: 1fr;
   grid-template-areas:
     "--_ ARW ARW ARW ARW _--"
     "AAA AAA BBB BBB CCC CCC";
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 0.5rem; 
+  grid-column-gap: 0.75rem;
+  grid-row-gap: 0.5rem;
+
+  @media (min-width: 768px) {
+    grid-column-gap: 1.5rem;
+  }
+
+  .js-mouse & {
+    min-height: 120vh;
+
+    &:not(.js-no-animation) {
+      transition: min-height $choose-select-transition-duration ease;
+    }
+
+    &[data-path-selected],
+    &[data-paths-completed="partner creator listener"] {
+      min-height: 0vh;
+    }
+
+    .scroll-target {
+      position: absolute;
+      height: 0;
+      width: 100%;
+      bottom: 20vh;
+    }
+  }
 }
 
 .card-choose {
+  $border-width: 5px;
+
+  --_path-color: #{$primary};
+  --_text-color: #{$primary};
+  --_text-contrast-color: #{$white};
+
+  align-self: stretch;
   position: relative;
   display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
   text-decoration: none;
 
-  aspect-ratio: 1 / 1;
-  border: 5px solid $primary;
-  background-image: none;
-  color: inherit;
-  transition: scale .5s ease-in-out; 
+  font-size: 1rem;
+  overflow: hidden;
+  text-wrap: balance;
 
-  cursor: pointer;
+  border: $border-width solid var(--_path-color);
+  background-image: none;
+  color: var(--_text-color);
+  transition: scale 0.5s ease-in-out;
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+  }
+
+  .h4 {
+    color: inherit;
+    font-size: 1.25rem;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+      flex-direction: row;
+    }
+  }
+
+  .cta {
+    position: relative;
+    display: none;
+    align-content: end;
+  }
+
+  .cta-content {
+    position: sticky;
+    bottom: 0;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    padding-block-end: 0.5rem;
+
+    .message {
+      text-transform: uppercase;
+    }
+  }
 
   &::after {
     content: "";
     position: absolute;
-    inset: 0 -0.5rem;
+    inset: 0 calc(1.5rem / -2 - #{$border-width});
   }
 
   &:active {
-    transform: scale(0.95); 
+    transform: scale(0.98);
   }
 
-  &:hover {
-    background-color: $primary;
-    color: $white;
+  &:hover,
+  &.completed {
+    background-color: var(--_path-color);
+    color: var(--_text-contrast-color);
+  }
+
+  &.path-highlight {
+    background-color: var(--_path-color);
+    color: var(--_text-contrast-color);
+
+    .h2 {
+      color: var(--_text-contrast-color);
+      font-size: 1.25rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .icon-bg {
+      .material-icons {
+        color: var(--_text-contrast-color);
+      }
+    }
   }
 
   &[data-path-target="partner"] {
     grid-area: AAA;
-    border-color: $ltblue;
-    color: $gray-800;
-    
-    &:hover {
-      background-color: $ltblue;
-      color: $black;
+    --_path-color: #{$ltblue};
+    --_text-color: #{$gray-800};
+    --_text-contrast-color: #{$gray-800};
+
+    [data-scroll-path="partner"] :not([data-path-selected]) > & {
+      background-color: var(--_path-color);
+      color: var(--_text-contrast-color);
+
+      .cta {
+        display: grid;
+      }
     }
 
-    &.path-highlight {
-      background-color: $ltblue;
-      color: $dark-blue;
-  
-      .icon-bg {
-        .material-icons {color: $white;}
-      }
+    & ~ &.completed {
+      display: none;
     }
   }
 
   &[data-path-target="creator"] {
     grid-area: BBB;
-    color: $red;
-    border-color: $red;
-      
-    &:hover {
-      background-color: $red;
-      color: $white;
+    --_path-color: #{$red};
+    --_text-color: #{$red};
 
-      .h4 {
-        color: $white;
+    [data-scroll-path="creator"] :not([data-path-selected]) > & {
+      background-color: var(--_path-color);
+      color: var(--_text-contrast-color);
+
+      .cta {
+        display: grid;
       }
     }
 
-    .h4 {
-      color: $red;
-    }
-
-    &.path-highlight {
-      background-color: $red;
-      color: $white;
-  
-      .h2 {
-        color: $white;
-      }
+    & ~ &.completed {
+      display: none;
     }
   }
 
   &[data-path-target="listener"] {
     grid-area: CCC;
-    color: $blue;
-    border-color: $blue;
-    
-    &:hover {
-      background-color: $blue;
-      color: $white;
+    --_path-color: #{$blue};
+    --_text-color: #{$blue};
 
-      .h4 {
-        color: $white;
+    [data-scroll-path="listener"] :not([data-path-selected]) > & {
+      background-color: var(--_path-color);
+      color: var(--_text-contrast-color);
+
+      .cta {
+        display: grid;
       }
     }
 
-    .h4 {
-      color: $blue;
+    & ~ &.completed {
+      display: none;
+    }
+  }
+
+  &.completed {
+    align-self: start;
+
+    .card-description {
+      font-weight: 900;
     }
 
-    &.path-highlight {
-      background-color: $blue;
-      color: $white;
-  
-      .h2 {
-        color: $white;
-      }
+    .cta {
+      display: none !important;
     }
   }
 }
@@ -147,6 +231,7 @@
 [data-path="partner"] {
   & + .prx-choose {
     .arrow,
+    [data-scroll-path="partner"] &:not([data-path-selected]) .arrow,
     [data-path-target="partner"]:hover ~ .arrow {
       grid-template-areas:
         "o- 1_ 1_"
@@ -154,6 +239,8 @@
         "-o 3_ 3_";
     }
 
+    [data-scroll-path="creator"] &:not([data-path-selected]) .arrow,
+    &[data-path-selected="creator"] .arrow,
     [data-path-target="creator"]:hover ~ .arrow {
       grid-template-areas:
         "o- 1_ 1_"
@@ -161,6 +248,8 @@
         "_3 -o 3_";
     }
 
+    [data-scroll-path="listener"] &:not([data-path-selected]) .arrow,
+    &[data-path-selected="listener"] .arrow,
     [data-path-target="listener"]:hover ~ .arrow {
       grid-template-areas:
         "o- 1_ 1_"
@@ -175,6 +264,8 @@
 [data-path="organization"],
 [data-path="creator"] {
   & + .prx-choose {
+    [data-scroll-path="partner"] &:not([data-path-selected]) .arrow,
+    &[data-path-selected="partner"] .arrow,
     [data-path-target="partner"]:hover ~ .arrow {
       grid-template-areas:
         "_1 o- 1_"
@@ -183,6 +274,7 @@
     }
 
     .arrow,
+    [data-scroll-path="creator"] &:not([data-path-selected]) .arrow,
     [data-path-target="creator"]:hover ~ .arrow {
       grid-template-areas:
         "_1 o- 1_"
@@ -190,6 +282,8 @@
         "_3 -o 3_";
     }
 
+    [data-scroll-path="listener"] &:not([data-path-selected]) .arrow,
+    &[data-path-selected="listener"] .arrow,
     [data-path-target="listener"]:hover ~ .arrow {
       grid-template-areas:
         "_1 o- 1_"
@@ -202,6 +296,8 @@
 // C Paths
 [data-path="listener"] {
   & + .prx-choose {
+    [data-scroll-path="partner"] &:not([data-path-selected]) .arrow,
+    &[data-path-selected="partner"] .arrow,
     [data-path-target="partner"]:hover ~ .arrow {
       grid-template-areas:
         "_1 _1 o-"
@@ -209,6 +305,8 @@
         "-o 3_ 3_";
     }
 
+    [data-scroll-path="creator"] &:not([data-path-selected]) .arrow,
+    &[data-path-selected="creator"] .arrow,
     [data-path-target="creator"]:hover ~ .arrow {
       grid-template-areas:
         "_1 _1 o-"
@@ -217,6 +315,7 @@
     }
 
     .arrow,
+    [data-scroll-path="listener"] &:not([data-path-selected]) .arrow,
     [data-path-target="listener"]:hover ~ .arrow {
       grid-template-areas:
         "_1 _1 o-"

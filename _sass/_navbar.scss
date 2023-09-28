@@ -17,12 +17,77 @@
 }
 
 .prx-navbar {
-  display: flex; 
-  flex-direction: column;
+  display: grid;
+  position: fixed;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 50px);
+  column-gap: 0;
+  row-gap: 0;
   background-color: $dark-blue;
   text-align: center;
-  width: 50px;
-  height: 100vh;
+  width: 100%;
+  z-index: 1020;
+  padding: 10px 1rem;
+  
+  .prx-side-btn {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    align-self: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 0.5rem;
+
+    &.prx-donate-btn {
+      grid-column: 3;
+    }
+  }
+
+  .prx-mark {
+    grid-column: 2;
+    grid-row: 1;
+
+    img {
+      width: 35px;
+      height: auto;
+    }
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(1, 50px);
+    grid-template-rows: repeat(3, 60px) auto;
+    width: 50px;
+    height: 100vh;
+    justify-items: start;
+    align-items: center;
+    padding: 0;
+
+    .prx-side-btn {
+      grid-column: 1;
+      grid-row: 2;
+      justify-content: start;
+      flex-direction: column;
+      border-radius: 0;
+      padding-left: 0;
+      padding-right: 0;
+      gap: 0;
+      width: 50px;
+  
+      &.prx-donate-btn {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+  
+    .prx-mark {
+      width: 50px;
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
 }
 
 .prx-side-btn {
@@ -66,8 +131,8 @@
 .prx-listener {
   .accordion-button, 
   .nav-link {
-    background-color: $ltblue;
-    color: $black;
+    background-color: $blue;
+    color: $white;
 
     &.collapsed::after {
       @include black-chevron();
@@ -90,8 +155,8 @@
 .prx-partner {
   .accordion-button, 
   .nav-link {
-    background-color: $blue;
-    color: $white;
+    background-color: $ltblue;
+    color: $black;
 
     &.collapsed::after {
       @include white-chevron();

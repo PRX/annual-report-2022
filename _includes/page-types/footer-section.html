@@ -1,0 +1,32 @@
+<section class="scroll-bg page {{ page.prx-path }}" data-path="{{ page.prx-path }}">
+  <div id="section-{{ page.prx-id }}" class="container">
+    {%- if page.hero-title -%}  
+      {% include cards/section-hero.html  %}
+    {%- endif -%}
+
+    <h3 class="h2 page-heading">{{ page.title }}</h3>
+    
+    <div class="prx-content">  
+      <div class="content">
+        {{ page.content }} 
+      </div> 
+    </div>
+
+    {%- if page.quote -%}
+      {% include cards/quote.html  %}
+    {%- endif -%}
+
+    {%- if page.infographic -%}
+      {% include cards/infographic.html  %}
+    {%- endif -%}
+
+    {%- if page.donor-quote -%}
+      {% include cards/quote-donor.html  %}
+    {%- endif -%}
+
+    {%- if page.donor-credit -%}
+      <p><em>{{ page.donor-credit }}</em></p>
+    {%- endif -%}
+
+  </div>
+</section>

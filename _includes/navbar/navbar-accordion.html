@@ -1,21 +1,21 @@
 <div class="accordion accordion-flush" id="accordionExample">
-  <div class="accordion-item prx-listener">
+  <div class="accordion-item prx-partner">
     <h2 class="accordion-header">
-      <button class="accordion-button collapsed text-uppercase fst-italic" type="button" data-bs-toggle="collapse" data-bs-target="#collapseListener" aria-expanded="false" aria-controls="collapseListener">
-        <span class="material-icons me-2" aria-label="hidden">headphones</span>
-        Listener Lounge
+      <button class="accordion-button collapsed text-uppercase fst-italic" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePartner" aria-expanded="false" aria-controls="collapsePartner">
+        <span class="material-icons me-2" aria-label="hidden">handshake</span>
+        Network Projects
       </button>
     </h2>
-    <div id="collapseListener" class="accordion-collapse collapse" data-bs-parent="#accordionListener">
+    <div id="collapsePartner" class="accordion-collapse collapse" data-bs-parent="#accordionPartner">
       <ul class="navbar-nav">
-        {% assign pages = site.pages | where_exp: "page", "page.prx-path contains 'listener'" | sort: "order" %}
+        {% assign pages = site.pages | where_exp: "page", "page.prx-path contains 'partner'" | sort: "order" %}
         {% for page in pages %}
           {% include navbar/navbar-accordion-item.html  %}
         {% endfor %}
       </ul>
     </div>
   </div>
-
+  
   <div class="accordion-item prx-creator">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed text-uppercase fst-italic" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCreator" aria-expanded="false" aria-controls="collapseCreator">
@@ -33,16 +33,16 @@
     </div>
   </div>
 
-  <div class="accordion-item prx-partner">
+  <div class="accordion-item prx-listener">
     <h2 class="accordion-header">
-      <button class="accordion-button collapsed text-uppercase fst-italic" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePartner" aria-expanded="false" aria-controls="collapsePartner">
-        <span class="material-icons me-2" aria-label="hidden">handshake</span>
-        Network Projects
+      <button class="accordion-button collapsed text-uppercase fst-italic" type="button" data-bs-toggle="collapse" data-bs-target="#collapseListener" aria-expanded="false" aria-controls="collapseListener">
+        <span class="material-icons me-2" aria-label="hidden">headphones</span>
+        Listener Lounge
       </button>
     </h2>
-    <div id="collapsePartner" class="accordion-collapse collapse" data-bs-parent="#accordionPartner">
+    <div id="collapseListener" class="accordion-collapse collapse" data-bs-parent="#accordionListener">
       <ul class="navbar-nav">
-        {% assign pages = site.pages | where_exp: "page", "page.prx-path contains 'partner'" | sort: "order" %}
+        {% assign pages = site.pages | where_exp: "page", "page.prx-path contains 'listener'" | sort: "order" %}
         {% for page in pages %}
           {% include navbar/navbar-accordion-item.html  %}
         {% endfor %}

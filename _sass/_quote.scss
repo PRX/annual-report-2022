@@ -15,14 +15,34 @@ blockquote {
       grid-column: span 2;
     }
 
-    .quote-arrow,
-    .quote-image {
+    .quote-image-wrapper {
       grid-row: 1;
       grid-column: 3;
+      
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      position: relative;
+      align-items: center;
     }
 
-    .quote-arrow {
-      margin-right: 3rem;
+    .quote-image {
+      grid-row: 1;
+      grid-column: 1;
     }
   }
+}
+
+.quote {
+  .display-1 {
+    font-size: 6rem;
+    text-align: center;
+  }
+}
+
+.quote-bg {
+  background-image: url("/assets/img/logo-b4-vector-dark.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 160px 139px;
 }
