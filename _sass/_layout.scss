@@ -6,9 +6,15 @@ body {
   color: #000;
   transition: background-color 1s ease;
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 1fr;
   min-height: 100vh;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 50px 1fr;
+  }
 }
+
+
 
 .bg-paths {
   position: fixed;
@@ -33,7 +39,7 @@ body {
       background-color: $ltblue;
 
       [data-theme="partner"] & {
-        opacity: 0.2;
+        opacity: 0.1;
       }
     }
 
@@ -41,7 +47,7 @@ body {
       background-color: $red;
 
       [data-theme="creator"] & {
-        opacity: 0.2;
+        opacity: 0.1;
       }
     }
 
@@ -49,7 +55,7 @@ body {
       background-color: $blue;
 
       [data-theme="listener"] & {
-        opacity: 0.2;
+        opacity: 0.1;
       }
     }
   }
@@ -96,8 +102,9 @@ audio {
 
 iframe {
  	aspect-ratio: 16 / 9;
-	height: 100%;
+	height: auto;
 	width: 100%; 
+  margin-top: 1rem;
 }
 
 .citation {

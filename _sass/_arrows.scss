@@ -13,60 +13,6 @@
   border-top: 0;
 }
 
-.arrow-container {
-  display: none;
-  position: relative;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-
-  @media (min-width: 992px) {
-    display: block;
-  }
-
-  .arrow-tall {
-    &::before {
-      content: "";
-      position: absolute;
-      right: calc( 6rem + 4px );
-      top: 2rem;
-      @include square-end;
-    }
-  }
-
-  .arrow-long {
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -12px;
-      left: 0;
-      transform: rotate(132deg);
-      @include triangle-end;
-    }
-  }
-
-  &.top {
-      margin-left: 33%;
-  }
-}
-
-.arrow-long {
-  border-bottom: $arrow-border;
-  width: 160%;
-  position: absolute;
-  right: 7rem;
-  bottom: 1rem;
-}
-
-.arrow-tall {
-  height: auto;
-  margin-top: 1rem;
-  margin-right: 6rem;
-  border-right: $arrow-border;
-  padding-top: 70%;
-}
-
 .arrow {
   --_line-width: 5px;
   --_line-color: #{$orange};
@@ -154,6 +100,150 @@
     &::after {
       bottom: calc(var(--_line-width) * 2.7);
       border-left-width: var(--_line-width);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .prx-content {
+    display: grid;
+    position: relative;
+    grid-template-columns: 55px 1fr 55px;
+    justify-content: space-between;
+
+    .content {
+      grid-column: 2;
+    }
+
+    .content-arrow-down {
+      border-left: 5px solid $orange;
+      grid-column: 1;
+      height: 100%;
+      position: relative;
+      
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -12px;
+        @include square-end;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -13px;
+        @include triangle-end;
+        transform: rotate(45deg);
+      }
+    }  
+  } 
+
+  .info-arrow {
+    grid-column: 1;
+    grid-row: 1;
+    border-left: 5px solid $orange;
+    border-bottom: 5px solid $orange;
+    height: 100%;
+    width: 100%;
+    padding: 5rem 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2rem;
+    
+    .info-arrow-start {
+      grid-column: 1;
+      grid-row: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      border-top: 5px solid $orange;
+
+      &:after {
+        content: "";
+        @include square-end();
+        position: absolute;
+        left: 91%;
+        top: -12px;
+      }
+    }
+
+    .info-arrow-end {
+      grid-column: 2;
+      grid-row: 2;
+      border-right: 5px solid $orange;
+      position: absolute;
+      right: 0;
+      bottom: -2rem;
+      height: 3rem;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: -12px;
+        @include triangle-end;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .quote-arrow {
+    grid-column: 1;
+    grid-row: 1;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    position: relative;
+    z-index: 10;
+    height: 110%;
+
+    
+    .quote-arrow-start {
+      grid-column: 2;
+      grid-row: 1;
+      position: absolute;
+      border-right: 5px solid $orange;
+      top: 2rem;
+      right: 1rem;
+      width: 100%;
+      height: 93%;
+      border-top: 5px solid $orange;
+
+      &:after {
+        content: "";
+        @include square-end();
+        position: absolute;
+        right: 91%;
+        top: -12px;
+      }
+    }
+
+    .quote-arrow-end {
+      grid-column: 1;
+      grid-row: 1;
+      border-top: 5px solid $orange;
+      border-left: 5px solid $orange;
+      position: absolute;
+      right: 1rem;
+      bottom: -58px;
+      height: 3rem;
+      width: 107%;
+
+      &:after {
+        content: "";
+        position: absolute;
+        border-left: 5px solid $orange;
+        bottom: 0;
+        left: -13px;
+        @include triangle-end;
+        transform: rotate(45deg);
+      }
     }
   }
 }

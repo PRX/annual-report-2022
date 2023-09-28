@@ -35,8 +35,12 @@
   grid-template-areas:
     "--_ ARW ARW ARW ARW _--"
     "AAA AAA BBB BBB CCC CCC";
-  grid-column-gap: 1.5rem;
+  grid-column-gap: 0.75rem;
   grid-row-gap: 0.5rem;
+
+  @media (min-width: 768px) {
+    grid-column-gap: 1.5rem;
+  }
 
   .js-mouse & {
     min-height: 120vh;
@@ -73,13 +77,28 @@
   align-content: start;
   text-decoration: none;
 
+  font-size: 1rem;
+  overflow: hidden;
+  text-wrap: balance;
+
   border: $border-width solid var(--_path-color);
   background-image: none;
   color: var(--_text-color);
   transition: scale 0.5s ease-in-out;
 
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+  }
+
   .h4 {
     color: inherit;
+    font-size: 1.25rem;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+      flex-direction: row;
+    }
   }
 
   .cta {
@@ -123,6 +142,11 @@
 
     .h2 {
       color: var(--_text-contrast-color);
+      font-size: 1.25rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+      }
     }
 
     .icon-bg {
@@ -194,10 +218,7 @@
     align-self: start;
 
     .card-description {
-      font-size: 3rem;
       font-weight: 900;
-      text-align: center;
-      text-transform: uppercase;
     }
 
     .cta {
