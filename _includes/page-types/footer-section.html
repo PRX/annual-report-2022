@@ -6,11 +6,17 @@
 
     <h3 class="h2 page-heading">{{ page.title }}</h3>
     
+    {%- if page.intro -%}
     <div class="prx-content">  
       <div class="content">
-        {{ page.content }} 
+        {{ page.intro }}
+
+        {%- if page.image -%}
+          {% include cards/image.html  %}
+        {%- endif -%}   
       </div> 
     </div>
+    {%- endif -%}  
 
     {%- if page.quote -%}
       {% include cards/quote.html  %}
@@ -19,6 +25,12 @@
     {%- if page.infographic -%}
       {% include cards/infographic.html  %}
     {%- endif -%}
+
+    <div class="prx-content">  
+      <div class="content"> 
+        {{ page.content }} 
+      </div> 
+    </div>
 
     {%- if page.donor-quote -%}
       {% include cards/quote-donor.html  %}
