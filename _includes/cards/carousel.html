@@ -1,0 +1,39 @@
+<div class="bootstrapCarousel carousel slide mb-4">
+  <div class="carousel-indicators">
+		{% assign slide_number = 0 %}
+		{% for image in page.images %}
+			<button 
+				type="button" 
+				{% if slide_number == 0 %}
+					class="active" 
+					aria-current="true"
+				{% endif %}
+				data-bs-target=".bootstrapCarousel" data-bs-slide-to="{{ slide_number | plus: 1 }}" 
+				aria-label="Slide {{ slide_number }}">
+			</button>
+			{% assign slide_number = slide_number | plus: 1 %}
+		{% endfor %}
+  </div>
+  <div class="carousel-inner">
+		{% assign slide_number = 0 %}
+		{% for image in page.images %}
+		<div class="carousel-item {% if slide_number == 0 %}active{% endif %} {{ slide_number }}">
+			{% picture {{ image.path }} --alt {{ image.alt }}  %}
+			{%- if image.caption -%}
+				<div class="carousel-caption d-none d-md-block">
+					{{ image.caption }}
+				</div>
+			{% endif %}
+		</div>
+		{% assign slide_number = slide_number | plus: 1 %}		
+		{% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target=".bootstrapCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target=".bootstrapCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

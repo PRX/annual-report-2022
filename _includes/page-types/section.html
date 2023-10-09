@@ -13,7 +13,13 @@
 
       {%- if page.video -%}
         {{ page.video }}
-      {% elsif page.image  %}  
+      {%- endif -%}
+      
+      {% if page.images  %}  
+        {% include cards/carousel.html  %}
+      {%- endif -%}
+      
+      {% if page.image  %}  
         {% include cards/image.html  %}
       {%- endif -%}
       </div>
