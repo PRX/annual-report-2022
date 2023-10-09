@@ -52,5 +52,15 @@
 }
 
 h4 {
+  margin-top: 1rem;
   margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dotted $orange;
+  letter-spacing: normal;
+}
+
+.prx-givers {
+  li {
+    color: $dark-blue;
+  }
 }

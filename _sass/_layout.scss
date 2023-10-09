@@ -94,6 +94,10 @@ img {
   width: 100%;
   height: auto;
   border-radius: 10px;
+
+  &.signature {
+    width: auto;
+  }
 }
 
 audio {
@@ -148,7 +152,8 @@ iframe {
   flex-grow: 1;
   flex-basis: 0;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   padding-left: 0;
 
   li {
@@ -164,5 +169,14 @@ iframe {
     @media (min-width: 992px) {
       width: calc( 25% - 1rem );
     }
+  }
+
+  dt {
+    color: $dark-blue;
+  }
+
+  dd {
+    color: $gray-600;
+    font-size: 1rem;
   }
 }
