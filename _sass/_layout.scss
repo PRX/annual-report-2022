@@ -94,6 +94,10 @@ img {
   width: 100%;
   height: auto;
   border-radius: 10px;
+
+  &.signature {
+    width: auto;
+  }
 }
 
 audio {
@@ -139,5 +143,40 @@ iframe {
     border-radius: 10px;
     object-fit: cover;
     object-position: center center;
+  }
+}
+
+.prx-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-basis: 0;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 0;
+
+  li {
+    width: calc( 50% - 1rem );
+    list-style: none;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+
+    @media (min-width: 768px) {
+      width: calc( 33% - 1rem );
+    }
+
+    @media (min-width: 992px) {
+      width: calc( 25% - 1rem );
+    }
+  }
+
+  dt {
+    color: $dark-blue;
+  }
+
+  dd {
+    color: $gray-600;
+    font-size: 1rem;
   }
 }
