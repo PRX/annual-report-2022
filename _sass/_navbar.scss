@@ -135,7 +135,7 @@
     color: $white;
 
     &.collapsed::after {
-      @include black-chevron();
+      @include white-chevron();
     }
   }
 }
@@ -159,7 +159,7 @@
     color: $black;
 
     &.collapsed::after {
-      @include white-chevron();
+      @include black-chevron();
     }
   }
 }

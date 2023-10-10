@@ -91,6 +91,11 @@ h4 {
   padding-bottom: 0.5rem;
   border-bottom: 1px dotted $orange;
   letter-spacing: normal;
+
+  &.h3 {
+    margin-top: 2rem;
+    border-bottom: none;
+  }
 }
 
 .prx-givers {
