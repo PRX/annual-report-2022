@@ -11,6 +11,10 @@
       <div class="content">
       {{ page.content }}
 
+      {%- if page.audio -%}
+        {% include cards/audio.html  %}
+      {%- endif -%}
+
       {%- if page.video -%}
         {{ page.video }}
       {%- endif -%}
