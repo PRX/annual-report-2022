@@ -33,12 +33,20 @@
       {% include cards/quote.html  %}
     {%- endif -%}
 
+    {%- if page.content2 -%}
+      {{ page.content2 }}
+    {%- endif -%}
+
     {%- if page.infographic -%}
       {% include cards/infographic.html  %}
     {%- endif -%}
 
     {%- if page.donor-quote -%}
       {% include cards/quote-donor.html  %}
+    {%- endif -%}
+
+    {%- if page.content3 -%}
+      {{ page.content3 }}
     {%- endif -%}
 
     {%- if page.donor-credit -%}
