@@ -11,10 +11,6 @@
       <div class="content">
       {{ page.content }}
 
-      {%- if page.audio -%}
-        {% include cards/audio.html  %}
-      {%- endif -%}
-
       {%- if page.video -%}
         {{ page.video }}
       {%- endif -%}
@@ -28,6 +24,10 @@
       {%- endif -%}
       </div>
     </div>
+
+    {%- if page.audio -%}
+      {% include cards/audio.html  %}
+    {%- endif -%}
     
     {%- if page.quote -%}
       {% include cards/quote.html  %}
