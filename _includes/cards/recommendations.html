@@ -1,5 +1,5 @@
 <div class="row recommendations">     
-	<h4 class="display-3 my-4">If you like <em>{{ page.recommendation-name }}</em>, you may also like:</h4>
+	<h4 class="display-3 my-4">{{ page.recommendation-name }}</h4>
 	{%- if page.recommendation-1 -%}
 	{% include cards/recommendation-item.html  
 		title=page.recommendation-1

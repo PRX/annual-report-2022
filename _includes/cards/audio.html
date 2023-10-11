@@ -1,5 +1,9 @@
-<figure>
+<figure class="mt-4">
+  <header class="h4">Audio Testimonial</header>
   <audio controls src="{{ page.audio }}" preload="none">
     <a href="{{ page.audio }}"> Download audio </a>
   </audio>
+  {%- if page.audio-citation -%}
+  <footer class="citation">&mdash;{{ page.audio-citation }}</footer>
+  {%- endif -%}
 </figure>

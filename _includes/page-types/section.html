@@ -24,9 +24,17 @@
       {%- endif -%}
       </div>
     </div>
+
+    {%- if page.audio -%}
+      {% include cards/audio.html  %}
+    {%- endif -%}
     
     {%- if page.quote -%}
       {% include cards/quote.html  %}
+    {%- endif -%}
+
+    {%- if page.content2 -%}
+      {{ page.content2 }}
     {%- endif -%}
 
     {%- if page.infographic -%}
@@ -35,6 +43,10 @@
 
     {%- if page.donor-quote -%}
       {% include cards/quote-donor.html  %}
+    {%- endif -%}
+
+    {%- if page.content3 -%}
+      {{ page.content3 }}
     {%- endif -%}
 
     {%- if page.donor-credit -%}
