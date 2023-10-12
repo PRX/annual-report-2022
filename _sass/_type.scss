@@ -1,5 +1,9 @@
 
 .page {
+  p {
+    text-wrap: pretty;
+  }
+
   a:link,
   a:visited {
     color: inherit;
@@ -43,6 +47,7 @@
   margin-bottom: 2rem;
   margin-top: 1.25rem;
   color: $dark-blue;
+  text-wrap: pretty;
 
   a:link, a:visited {
     font-weight: 900;
