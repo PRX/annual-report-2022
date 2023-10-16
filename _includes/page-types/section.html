@@ -33,8 +33,13 @@
       {% include cards/quote.html  %}
     {%- endif -%}
 
+    
     {%- if page.content2 -%}
+    <div class="prx-content mt-4 mb-4">
+      <div class="content">
       {{ page.content2 }}
+      </div>
+    </div>
     {%- endif -%}
 
     {%- if page.infographic -%}
@@ -46,11 +51,17 @@
     {%- endif -%}
 
     {%- if page.content3 -%}
+    <div class="prx-content mt-4 mb-4">
+      <div class="content">
       {{ page.content3 }}
+      </div>
+    </div>
     {%- endif -%}
 
     {%- if page.donor-credit -%}
+    <div class="donor-credit mt-4 mb-4">
       <p><em>{{ page.donor-credit }}</em></p>
+    </div>
     {%- endif -%}
 
     {%- if page.recommendation-name -%}

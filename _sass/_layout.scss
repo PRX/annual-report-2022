@@ -8,6 +8,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   min-height: 100vh;
+  text-wrap: balance;
 
   @media (min-width: 768px) {
     grid-template-columns: 50px 1fr;
@@ -87,7 +88,7 @@ body {
 }
 
 .infographic {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 img {
