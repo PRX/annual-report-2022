@@ -1,3 +1,18 @@
+{%- if page.donor-quote-image -%}
+<div class="row quote-image-container">
+  <blockquote class="quote-text g-col-md-8">
+    <div class="display-3">{{ page.donor-quote }}</div>
+    {%- if page.donor-quote-citation -%}<footer class="citation">&mdash;{{ page.donor-quote-citation }}</footer>{%- endif -%}
+  </blockquote>
+
+  <div class="quote-image-wrapper">
+    <figure class="quote-image m-0 p-0">
+      {% picture {{ page.donor-quote-image }} --alt {{ page.donor-quote-image-alt }}  %}
+    </figure>
+
+  </div>
+</div>  
+{% else %}
 <blockquote class="quote row">
   <div class="col-md-2 quote-text quote-bg d-flex align-items-center justify-content-center">
     <p class="display-1" aria-label="hidden">&ldquo;</p>
@@ -10,3 +25,4 @@
     {%- endif -%}
   </div>
 </blockquote>
+{%- endif -%}
