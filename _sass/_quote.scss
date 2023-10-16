@@ -9,6 +9,8 @@ blockquote {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1;
     align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
 
     .quote-text {
       grid-row: 1;
