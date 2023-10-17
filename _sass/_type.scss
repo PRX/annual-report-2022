@@ -4,14 +4,16 @@
     text-wrap: pretty;
   }
 
+  a,
   a:link,
   a:visited {
     color: inherit;
     text-decoration: none;
     position: relative;
     font-weight: 700;
+    background-color: transparent;
 
-    &::before {
+    &::after {
       content: '';
       background-color: rgba(251, 147, 6, 0.75);
       position: absolute;
@@ -24,7 +26,7 @@
     }
 
     &:hover {
-      &::before {
+      &::after {
         bottom: 0;
         height: 100%;
       }
