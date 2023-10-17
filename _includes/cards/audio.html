@@ -1,5 +1,6 @@
 <figure class="mt-4">
   {%- if page.audio-quote -%}
+  
   <blockquote class="quote row">
     <div class="col-md-2 quote-text quote-bg d-flex align-items-center justify-content-center">
       <audio controls src="{{ page.audio }}" preload="none">
@@ -15,5 +16,15 @@
       {%- endif -%}
     </div>
   </blockquote>
+
+  {%- else -%}
+  
+  <audio controls src="{{ page.audio }}" preload="none">
+      <a href="{{ page.audio }}"> Download audio </a>
+    </audio>
+    {%- if page.audio-citation -%}
+    <footer class="citation">&mdash;{{ page.audio-citation }}</footer>
+    {%- endif -%}
+
   {%- endif -%}
 </figure>
