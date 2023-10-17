@@ -12,6 +12,7 @@
     position: relative;
     font-weight: 700;
     background-color: transparent;
+    text-wrap: nowrap;
 
     &::after {
       content: '';
