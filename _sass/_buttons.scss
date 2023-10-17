@@ -1,7 +1,119 @@
 .btn-primary {
-    background-color: $primary;
+  background-color: $primary;
 }
 
 .btn-secondary {
-    background-color: $secondary;
+  background-color: $secondary;
+}
+
+.play-button {
+  $button-color: $primary;
+  $icon-color: $white;
+  $ring-color-1: $red;
+  $ring-color-2: $ltblue;
+  $ring-size: 0.1em;
+
+  --_offset1: var(--offset1, 1);
+  --_offset2: var(--offset2, 1);
+
+  display: none;
+  position: relative;
+
+	filter: url(#goo);
+
+  padding: 0.25em;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: $button-color;
+
+  color: $icon-color;
+
+  &::after,
+  &::before {
+    content: '';
+    transform-origin: 50% 50%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border-style: solid;
+  }
+  &::after {
+    animation: spin 870ms ease-in-out alternate infinite;
+    border-width: $ring-size;
+    border-color: color-mix(in srgb, #{$ring-color-1} calc((var(--_offset1) - 1) * 1.8 * 100%), #{$button-color});
+  }
+  &::before {
+    animation: spin 730ms ease-in-out 135ms alternate infinite;
+    border-width: $ring-size * 0.8;
+    border-color: color-mix(in srgb, #{$ring-color-2} calc((var(--_offset2) - 1) * 1.8 * 100%), #{$button-color});
+  }
+
+  &:hover,
+  &:focus-visible {
+    --offset1: 1.07;
+    --offset2: 1.1;
+  }
+
+  .pause {
+    display: none;
+  }
+  
+  &:hover,
+  &:focus-visible,
+  &.playing {
+    &::after,
+    &::before {
+      height: 98%;
+    }
+    &::after {
+      width: calc(98% * var(--_offset1));
+    }
+    &::before {
+      width: calc(98% * var(--_offset2));
+    }
+  }
+
+  &.playing {
+    .play {
+      display: none;
+    }
+    .pause {
+      display: inline;
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  .js-on & {
+    display: grid;
+    place-items: center;
+
+    & > * {
+      grid-column: 1;
+      grid-row: 1;
+      font-size: inherit;
+      pointer-events: none;
+    }
+
+    & + audio {
+      display: none;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

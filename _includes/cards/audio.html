@@ -1,9 +1,33 @@
 <figure class="mt-4">
-  <header class="h4">Audio Testimonial</header>
+  {%- if page.audio-quote -%}
+  
+  <blockquote class="quote row">
+    <div class="col-md-2 mb-2 mb-md-0 quote-audio d-flex align-items-center justify-content-center">
+      <button type="button" class="play-button">
+        <i class="material-icons play">play_arrow</i>
+        <i class="material-icons pause">pause</i>
+      </button>
+      <audio class="play-button-audio" controls src="{{ page.audio }}" preload="none">
+        <a href="{{ page.audio }}"> Download audio </a>
+      </audio>
+    </div>
+  
+    <div class="col-md-10">
+      <div class="display-3">{{ page.audio-quote }}</div>
+      {%- if page.audio-citation -%}
+      <footer class="citation">&mdash;{{ page.audio-citation }}</footer>
+      {%- endif -%}
+    </div>
+  </blockquote>
+
+  {%- else -%}
+  
   <audio controls src="{{ page.audio }}" preload="none">
-    <a href="{{ page.audio }}"> Download audio </a>
-  </audio>
-  {%- if page.audio-citation -%}
-  <footer class="citation">&mdash;{{ page.audio-citation }}</footer>
+      <a href="{{ page.audio }}"> Download audio </a>
+    </audio>
+    {%- if page.audio-citation -%}
+    <footer class="citation">&mdash;{{ page.audio-citation }}</footer>
+    {%- endif -%}
+
   {%- endif -%}
 </figure>
