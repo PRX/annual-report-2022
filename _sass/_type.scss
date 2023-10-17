@@ -12,7 +12,8 @@
     position: relative;
     font-weight: 700;
     background-color: transparent;
-    text-wrap: nowrap;
+    // text-wrap: nowrap;
+    display: inline-block;
 
     &::after {
       content: '';
