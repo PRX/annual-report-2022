@@ -2,11 +2,14 @@
   {%- if page.audio-quote -%}
   
   <blockquote class="quote row">
-    <div class="col-md-2 quote-text quote-bg d-flex align-items-center justify-content-center">
-      <audio controls src="{{ page.audio }}" preload="none">
+    <div class="col-md-2 mb-2 mb-md-0 quote-audio d-flex align-items-center justify-content-center">
+      <button type="button" class="play-button">
+        <i class="material-icons play">play_arrow</i>
+        <i class="material-icons pause">pause</i>
+      </button>
+      <audio class="play-button-audio" controls src="{{ page.audio }}" preload="none">
         <a href="{{ page.audio }}"> Download audio </a>
       </audio>
-      <p class="display-1" aria-label="hidden">&ldquo;</p>
     </div>
   
     <div class="col-md-10">

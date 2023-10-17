@@ -1,15 +1,15 @@
 <div class="row">    
   <div class="col-md-4">
     <div class="card card-hero {{ page.prx-path }}">            
-      <p class="fs-4 text-uppercase mb-2 d-flex align-items-center">
+      <p class="fs-4 text-uppercase mx-auto px-2 d-flex gap-2 align-items-center">
         {% if page.prx-path == "creator" %} 
-          <span class="material-icons me-2" aria-label="hidden">mic</span> 
+          <span class="material-icons" aria-hidden="true">mic</span> 
           <span>Creator Highlights</span>
         {% elsif page.prx-path == "listener" %} 
-          <span class="material-icons me-2" aria-label="hidden">headphones</span> 
+          <span class="material-icons" aria-hidden="true">headphones</span> 
           <span>Listener Lounge</span>
         {% elsif page.prx-path == "partner" %}
-          <span class="material-icons me-2" aria-label="hidden">handshake</span> 
+          <span class="material-icons" aria-hidden="true">handshake</span> 
           <span>Network Partnerships</span> 
         {%- endif -%}
       </p>

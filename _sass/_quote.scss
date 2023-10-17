@@ -3,6 +3,30 @@ blockquote {
   padding-bottom: 3rem;
 }
 
+.quote {
+  .display-1 {
+    font-size: 6rem;
+    text-align: center;
+  }
+}
+
+.quote-bg {
+  background-image: url("/assets/img/logo-b4-vector-dark.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.quote-audio {
+  font-size: clamp(2rem, 20vw, 5rem);
+
+  @media (min-width: 768px) {
+    & {
+      font-size: clamp(2rem, 5vw, 5rem);
+    }
+  }
+}
+
 @media (min-width: 992px) {
   .quote-image-container {
     display: grid;
@@ -11,6 +35,11 @@ blockquote {
     align-items: center;
     margin-top: 1.5rem;
     margin-bottom: 4rem;
+
+    .quote-audio {
+      grid-row: 1;
+      grid-column: span 2;
+    }
 
     .quote-text {
       grid-row: 1;
@@ -33,18 +62,4 @@ blockquote {
       grid-column: 1;
     }
   }
-}
-
-.quote {
-  .display-1 {
-    font-size: 6rem;
-    text-align: center;
-  }
-}
-
-.quote-bg {
-  background-image: url("/assets/img/logo-b4-vector-dark.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 160px 139px;
 }

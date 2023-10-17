@@ -12,10 +12,9 @@
 }
 
 .card-hero {
-  display: flex;
-  align-items: center;
+  display: grid;
+  align-content: center;
   justify-content: center;
-  flex-direction: column;
   text-align: center;
   height: 60vh;
   margin-bottom: 1rem;
