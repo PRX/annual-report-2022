@@ -12,10 +12,9 @@
     position: relative;
     font-weight: 700;
     background-color: transparent;
-    // text-wrap: nowrap;
     display: inline-block;
 
-    &::after {
+    &::before {
       content: '';
       background-color: rgba(251, 147, 6, 0.75);
       position: absolute;
@@ -28,7 +27,7 @@
     }
 
     &:hover {
-      &::after {
+      &::before {
         bottom: 0;
         height: 100%;
       }
