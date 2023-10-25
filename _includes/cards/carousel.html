@@ -1,4 +1,4 @@
-<div class="bootstrapCarousel carousel slide mb-4">
+<div class="carousel-{{ page.prx-id }} carousel slide mb-4">
   <div class="carousel-indicators">
 		{% assign slide_number = 0 %}
 		{% for image in page.images %}
@@ -8,7 +8,7 @@
 					class="active" 
 					aria-current="true"
 				{% endif %}
-				data-bs-target=".bootstrapCarousel" data-bs-slide-to="{{ slide_number | plus: 1 }}" 
+				data-bs-target=".carousel-{{ page.prx-id }}" data-bs-slide-to="{{ slide_number | plus: 1 }}" 
 				aria-label="Slide {{ slide_number }}">
 			</button>
 			{% assign slide_number = slide_number | plus: 1 %}
@@ -28,11 +28,11 @@
 		{% assign slide_number = slide_number | plus: 1 %}		
 		{% endfor %}
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target=".bootstrapCarousel" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target=".carousel-{{ page.prx-id }}" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target=".bootstrapCarousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target=".carousel-{{ page.prx-id }}" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
