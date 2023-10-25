@@ -110,3 +110,30 @@ h4 {
     color: $dark-blue;
   }
 }
+
+.awards-list {
+  list-style-position: outside;
+  list-style: none;
+  
+  li::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-image: url("/assets/img/arrow-forward.svg");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    position: relative;
+    top: 0.08rem;
+  }
+
+  a:link,
+  a:visited {
+    display: inline;
+
+    &::before {
+      display: none;
+    }
+  }
+}
