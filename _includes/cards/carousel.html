@@ -8,8 +8,9 @@
 					class="active" 
 					aria-current="true"
 				{% endif %}
-				data-bs-target=".carousel-{{ page.prx-id }}" data-bs-slide-to="{{ slide_number | plus: 1 }}" 
-				aria-label="Slide {{ slide_number }}">
+				data-bs-target=".carousel-{{ page.prx-id }}"
+				data-bs-slide-to="{{ slide_number }}" 
+				aria-label="Slide {{ slide_number | plus: 1 }}">
 			</button>
 			{% assign slide_number = slide_number | plus: 1 %}
 		{% endfor %}
