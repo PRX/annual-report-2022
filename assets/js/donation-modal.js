@@ -1,20 +1,37 @@
 (function (win) {
-  win.egProps = {
-    campaigns: [
-      {
-        campaignId: '529551',
-    customDomain: 'give.prx.org',
-        donation: {
-          modal: {
-            urlParams: { egfa: true },
-            elementSelector: 'SELECTOR FROM YOUR WEBSITE'
-          },
-          // ADD ABANDON CART NUDGE CODE HERE TO ENABLE
+  const customDomain = 'give.prx.org';
+  const modalUrlParams = { egfa: true };
+  const donateButtonSelector = '[data-donate-campaign-id]';
+  const campaigns = new Map();
+
+  /* Setup our donation button. */
+  win.document.querySelectorAll(donateButtonSelector).forEach((elm) => {
+    const campaignId = elm.dataset.donateCampaignId;
+
+    campaigns.set(campaignId, {
+      campaignId,
+      customDomain,
+      donation: {
+        modal: {
+          urlParams: modalUrlParams
         }
       }
-    ]
-  }
-  win.document.body.appendChild(makeEGScript())
+    });
+
+    elm.addEventListener('click', (e => {
+      e.preventDefault();
+
+      win.eg?.[campaignId]?.donation.modal.open();
+    }));
+  });
+
+  /* Configure embed props. */
+  win.egProps = {
+    campaigns: [...campaigns.values()]
+  };
+
+  /* Add embed script tag. */
+  win.document.body.appendChild(makeEGScript());
 
   /* Create the embed script */
   function makeEGScript() {
@@ -23,16 +40,5 @@
     egScript.setAttribute('async', 'true')
     egScript.setAttribute('src', 'https://sdk.classy.org/embedded-giving.js')
     return egScript
-  }
-
-  /* Read URL Params from your website. This could potentially
-    * be included in the embed snippet */
-  function readURLParams() {
-    const searchParams = new URLSearchParams(location.search)
-    const validUrlParams = ['c_src', 'c_src2']
-    return validUrlParams.reduce(function toURLParamsMap(urlParamsSoFar, validKey) {
-      const value = searchParams.get(validKey)
-      return value === null ? urlParamsSoFar : { ...urlParamsSoFar, [validKey]: value }
-    }, {})
   }
 })(window)
