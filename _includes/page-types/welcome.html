@@ -17,11 +17,11 @@
       </div>
       {%- endif -%}
     </div>  
+    {%- if page.content2 -%}
     <div class="row mt-4">
-      {%- if page.content2 -%}
-        {{ page.content2 }}
-      {%- endif -%}
+      {{ page.content2 }}
     </div>
+    {%- endif -%}
   </div>
 </section>
 
