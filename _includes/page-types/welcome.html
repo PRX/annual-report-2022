@@ -5,7 +5,9 @@
       <div class="col-md-8">
         {{ page.content }}
         
-        <img src="/assets/img/kerri-signature.png" alt="Kerri Hoffman's signature" width="250" height="92" class="signature" />
+        <figure class="signature">
+          {% picture img/kerri-signature.png --alt "Kerri Hoffman's signature" %}
+        </figure>
       </div>
 
       {%- if page.image -%} 
