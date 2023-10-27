@@ -24,25 +24,12 @@
     background-size: 100% 3px, var(--_bg-width) 100%;
     background-position: left bottom;
 
-    // &::before {
-    //   content: '';
-    //   background-color: rgba(251, 147, 6, 0.75);
-    //   position: absolute;
-    //   left: 0;
-    //   bottom: 3px;
-    //   width: 100%;
-    //   height: 5px;
-    //   z-index: -1;
-    //   transition: all .3s ease-in-out;
-    // }
+    &:focus-visible {
+      outline: none;
+    }
 
-    &:hover {
+    &:hover, &:focus-visible {
       --link-bg-width: 100%;
-
-      // &::before {
-      //   bottom: 0;
-      //   height: 100%;
-      // }
     }
   }
 }

@@ -39,7 +39,7 @@
 			transition: --_bg-degrees 500ms;
 		}
 
-		&:hover {
+		&:hover, &:focus-visible {
 			--_bg-degrees: 360deg;
 		}
 	}
