@@ -1,6 +1,15 @@
 (() => {
   document.documentElement.classList.add("js-on");
 
+  const offcanvasNavElement = document.getElementById("offcanvasNav");
+  const offcanvasNav = new bootstrap.Offcanvas(offcanvasNavElement);
+
+  document.querySelectorAll("a.nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      offcanvasNav.hide();
+    });
+  })
+
   let scrollPath;
   let disableScrollPathLoad = false;
   let menuObserver;
@@ -272,7 +281,7 @@
   function scrollToAnchorTarget(id) {
     if (!id) return;
 
-    const targetElement = document.getElementById(id);
+    const targetElement = document.getElementById(id)?.parentElement;
 
     if (!targetElement) return;
 
