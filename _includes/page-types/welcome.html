@@ -5,14 +5,23 @@
       <div class="col-md-8">
         {{ page.content }}
         
-        <img src="/assets/img/kerri-signature.svg" alt="Kerri Hoffman's signature" class="signature" />
+        <img src="/assets/img/kerri-signature.png" alt="Kerri Hoffman's signature" width="250" height="92" class="signature" />
       </div>
+
+      {%- if page.image -%} 
       <div class="col-md-4">
         <figure class="page-image">
           {% picture {{ page.image }} --alt {{ page.image-alt }}  %}
           <p class="caption fs-6">{{ page.image-caption }}</p>
         </figure>
+      </div>
+      {%- endif -%}
+    </div>  
+    {%- if page.content2 -%}
+    <div class="row mt-4">
+      {{ page.content2 }}
     </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -22,7 +31,7 @@
     choose-style="path-highlight"
     link=page.partner-link
     icon="handshake"
-    heading="PRX is for Partners"
+    heading="PRX is for Networks"
     description=page.partner-description
   %}
   {% include cards/choose-card.html 

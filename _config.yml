@@ -19,15 +19,9 @@
 # in the templates via {{ site.myvariable }}.
 
 title: 2023 PRX Annual Report
-email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: ""
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+  At PRX, the choices we make help tell an ever-changing story about the audio ecosystem. We invite you to choose your own adventure and explore the last year at PRX by scrolling through a handful of the journeys we've taken.
+url: https://2023.prx.org # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 theme: minima

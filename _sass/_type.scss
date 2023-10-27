@@ -110,3 +110,31 @@ h4 {
     color: $dark-blue;
   }
 }
+
+.awards-list {
+  list-style-position: outside;
+  
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+
+    &::marker {
+      color: lighten($orange, 25%);
+    }
+  }
+
+  a:link,
+  a:visited {
+    display: inline;
+    text-decoration: underline;
+    text-decoration-color: lighten($orange, 25%);
+    text-decoration-thickness: 5px;
+    -webkit-text-decoration-skip: unset; 
+    text-decoration-skip: unset; 
+    text-decoration-skip-ink: none;
+
+    &::before {
+      display: none;
+    }
+  }
+}

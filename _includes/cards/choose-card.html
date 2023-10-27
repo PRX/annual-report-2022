@@ -5,8 +5,11 @@
     <div class="h2 card-title text-uppercase d-flex align-items-center">
       {{ include.heading }}
     </div>
-		<div class="card-description">
+		<div class="card-description d-none d-md-block">
 			{{ include.description }}
+		</div>
+    <div class="d-block d-md-none">
+			<p class="mt-4"><em>Click to choose</em></p>
 		</div>
   </div>
 	{%- else -%}
