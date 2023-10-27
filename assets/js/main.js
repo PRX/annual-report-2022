@@ -1,7 +1,6 @@
 (() => {
   document.documentElement.classList.add("js-on");
 
-  let useScrollSelection = false;
   let scrollPath;
   let disableScrollPathLoad = false;
   let menuObserver;
@@ -11,10 +10,19 @@
     .querySelector(centerRectQuery)
     ?.getBoundingClientRect();
 
+  function trackSectionView(sectionId, inputType, navLocation) {
+    if (plausible) {
+      plausible("Section View", { 
+        props: { sectionId, inputType, navLocation },
+        callback: () => {
+          console.log("Section View", { sectionId, inputType, navLocation });
+        }
+      });
+    }
+  }
+
   // Detect user interaction type.
   function detectMouseMove() {
-    useScrollSelection = true;
-
     document.documentElement.classList.add("js-mouse");
 
     window.removeEventListener("mousemove", detectMouseMove);
@@ -144,6 +152,9 @@
 
     const linkId = linkElement.getAttribute("href");
     const id = linkId.match(/#section-([\w-]+)/)[1];
+
+    // Plausible event: Section View
+    trackSectionView(id, "click", "choose");
 
     appendSectionContent(id, linkElement.parentElement);
   }
@@ -280,6 +291,9 @@
     const href = linkElement.getAttribute("href");
     const id = href.match(/^#section-([\w-]+)/)[1];
 
+    // Plausible event: Section View
+    trackSectionView(id, "click", "main");
+
     scrollToSection(id);
   }
 
@@ -293,6 +307,9 @@
     const href = linkElement.getAttribute("href");
     const id = href.match(/^#([\w-]+)/)?.[1];
 
+    // Plausible event: Section View
+    trackSectionView(id, "click", "main");
+
     scrollToAnchorTarget(id);
   }
 
@@ -303,6 +320,9 @@
     const id = hash.match(/#section-([\w-]+)/)?.[1];
 
     if (id) {
+      // Plausible event: Section View
+      trackSectionView(id, "url", "browser");
+
       scrollToSection(id);
     }
   }
@@ -372,6 +392,9 @@
 
           const linkHref = sectionLink.getAttribute("href");
           const id = linkHref.match(/#section-([\w-]+)/)[1];
+
+          // Plausible event: Section View
+          trackSectionView(id, "scroll", "choose");
 
           appendSectionContent(id, menu);
         }
