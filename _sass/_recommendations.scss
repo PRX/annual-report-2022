@@ -1,14 +1,52 @@
+@property --_bg-degrees {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+
 .recommendations {
 	position: relative;
 }
 
 .recommendation-item {
+	display: grid;
+	place-items: center;
 	text-align: center;
 	margin-top: 2rem;
 	margin-bottom: 3rem;
 
+	a {
+		--_bg-degrees: var(--recommendation-link-bg-degrees, 0);
+
+		display: block;
+		position: relative;
+		isolation: isolate;
+
+		padding: 0;
+
+		background: none;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: -0.25rem;
+			z-index: -1;
+
+			border-radius: calc(10px + 0.25rem);
+
+			background-image: conic-gradient(var(--_bg-color), var(--_bg-color) var(--_bg-degrees), transparent var(--_bg-degrees), transparent);
+
+			transition: --_bg-degrees 500ms;
+		}
+
+		&:hover {
+			--_bg-degrees: 360deg;
+		}
+	}
+
 	img {
 		max-width: 200px;
 		height: auto;
+		background-color: $white;
 	}
 }
