@@ -20,11 +20,17 @@ body {
   inset: 0;
   z-index: -1;
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 50px 1fr;
+
+    .paths {
+      grid-column: 2;
+    }
+  }
 
   .paths {
-    grid-column: 2;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 1.5rem;
