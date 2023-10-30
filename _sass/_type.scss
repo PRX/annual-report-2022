@@ -4,32 +4,30 @@
     text-wrap: pretty;
   }
 
-  a,
-  a:link,
-  a:visited {
+  :where(a, a:link, a:visited) {
+    --_bg-progress: var(--link-bg-progress, 0);
+    --_bg-color: var(--link-bg-color, #{$orange});
+
     color: inherit;
     text-decoration: none;
     position: relative;
     font-weight: 700;
-    display: inline-block;
 
-    &::before {
-      content: '';
-      background-color: rgba(251, 147, 6, 0.75);
-      position: absolute;
-      left: 0;
-      bottom: 3px;
-      width: 100%;
-      height: 5px;
-      z-index: -1;
-      transition: all .3s ease-in-out;
+    transition: background-size 250ms;
+
+    background-image:
+      linear-gradient(var(--_bg-color), var(--_bg-color)),
+      linear-gradient(var(--_bg-color), var(--_bg-color));
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100% 3px, 100% var(--_bg-progress);
+    background-position: left bottom;
+
+    &:focus-visible {
+      outline: none;
     }
 
-    &:hover {
-      &::before {
-        bottom: 0;
-        height: 100%;
-      }
+    &:hover, &:focus-visible {
+      --link-bg-progress: 100%;
     }
   }
 }
@@ -117,24 +115,5 @@ h4 {
   li {
     margin-bottom: 0.5rem;
     line-height: 1.3;
-
-    &::marker {
-      color: lighten($orange, 25%);
-    }
-  }
-
-  a:link,
-  a:visited {
-    display: inline;
-    text-decoration: underline;
-    text-decoration-color: lighten($orange, 25%);
-    text-decoration-thickness: 5px;
-    -webkit-text-decoration-skip: unset; 
-    text-decoration-skip: unset; 
-    text-decoration-skip-ink: none;
-
-    &::before {
-      display: none;
-    }
   }
 }
