@@ -384,7 +384,7 @@
 
   // Create an Intersection Observer
   const sectionObserver = new IntersectionObserver(handleSectionIntersection, {
-    threshold: 1, // Trigger when 33% of the target is visible
+    threshold: 1, // Trigger when 100% of the target is visible.
   });
 
   // Select all panels with the class 'scroll-bg'
