@@ -5,7 +5,7 @@
   }
 
   :where(a, a:link, a:visited) {
-    --_bg-width: var(--link-bg-width, 0);
+    --_bg-progress: var(--link-bg-progress, 0);
     --_bg-color: var(--link-bg-color, #{$orange});
 
     color: inherit;
@@ -15,13 +15,13 @@
 
     padding-inline: 0.25rem;
 
-    transition: background-size 200ms;
+    transition: background-size 250ms;
 
     background-image:
       linear-gradient(var(--_bg-color), var(--_bg-color)),
       linear-gradient(var(--_bg-color), var(--_bg-color));
     background-repeat: no-repeat, no-repeat;
-    background-size: 100% 3px, var(--_bg-width) 100%;
+    background-size: 100% 3px, 100% var(--_bg-progress);
     background-position: left bottom;
 
     &:focus-visible {
@@ -29,7 +29,7 @@
     }
 
     &:hover, &:focus-visible {
-      --link-bg-width: 100%;
+      --link-bg-progress: 100%;
     }
   }
 }
@@ -117,14 +117,5 @@ h4 {
   li {
     margin-bottom: 0.5rem;
     line-height: 1.3;
-
-    &::marker {
-      color: lighten($orange, 25%);
-    }
-  }
-
-  a:link,
-  a:visited {
-    --link-bg-color: #{lighten($orange, 25%)};
   }
 }
