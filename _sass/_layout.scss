@@ -99,8 +99,10 @@ img {
   width: 100%;
   height: auto;
   border-radius: 10px;
+}
 
-  &.signature {
+.signature {
+  img {
     max-width: 250px;
   }
 }
