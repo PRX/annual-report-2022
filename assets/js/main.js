@@ -372,7 +372,7 @@
           sectionId = sectionElement?.querySelector('[id]')?.getAttribute('id').replace(/^section-/, '');
         }
 
-        history.replaceState({}, '', sectionId ? `#section-${sectionId}` : '/');
+        history?.replaceState({}, '', sectionId ? `#section-${sectionId}` : '/');
 
         document.body.setAttribute(
           "data-theme",
