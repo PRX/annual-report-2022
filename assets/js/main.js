@@ -243,7 +243,7 @@
     menuElement.setAttribute("data-path-selected", path);
     menuElement.after(newSection, ...(newMenu ? [newMenu] : []));
 
-    sectionObserver.observe(newSection);
+    addSectionScrollTarget(newSection);
 
     initPlayButtons(newSection);
 
@@ -364,9 +364,19 @@
   function handleSectionIntersection(entries, observer) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
+        const sectionElement = entry.target.closest('[data-path]');
+        const path = sectionElement?.dataset.path;
+        let sectionId = sectionElement?.dataset.sectionId;
+
+        if (!sectionId) {
+          sectionId = sectionElement?.querySelector('[id]')?.getAttribute('id').replace(/^section-/, '');
+        }
+
+        history.replaceState({}, '', sectionId ? `#section-${sectionId}` : '/');
+
         document.body.setAttribute(
           "data-theme",
-          entry.target.getAttribute("data-path")
+          path
         );
       }
     });
@@ -374,16 +384,30 @@
 
   // Create an Intersection Observer
   const sectionObserver = new IntersectionObserver(handleSectionIntersection, {
-    threshold: 0.25, // Trigger when 33% of the target is visible
+    threshold: 1, // Trigger when 33% of the target is visible
   });
 
   // Select all panels with the class 'scroll-bg'
-  const sectionsWithPath = document.querySelectorAll("section[data-path]");
+  const sectionsWithPath = document.querySelectorAll(".content-container [data-path]");
 
   // Observe each panel
   sectionsWithPath.forEach(function (section) {
-    sectionObserver.observe(section);
+    addSectionScrollTarget(section);
   });
+
+  function addSectionScrollTarget(section) {
+    const scrollTargetWrapper = document.createElement('div');
+    const scrollTarget = document.createElement('div');
+
+    scrollTargetWrapper.classList.add('scroll-target-wrapper');
+    scrollTarget.classList.add('scroll-target');
+    scrollTargetWrapper.appendChild(scrollTarget);
+
+    section.classList.add('js-observed');
+    section.appendChild(scrollTargetWrapper);
+
+    sectionObserver.observe(scrollTarget);
+  }
 
   function initMenuScrollObserver() {
     // Function to handle changes in intersection
