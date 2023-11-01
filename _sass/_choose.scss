@@ -90,6 +90,17 @@
     font-size: 1.25rem;
   }
 
+  .card-body {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+
+
+    @media (min-width: 768px) {
+      padding-left: var(--bs-card-spacer-x);
+      padding-right: var(--bs-card-spacer-x);
+    }
+  }
+
   .h4 {
     color: inherit;
     font-size: 1.25rem;
