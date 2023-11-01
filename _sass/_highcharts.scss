@@ -3,11 +3,11 @@
 	gap: 3rem;
 	min-width: 320px;
 	max-width: 80vh;
-	margin: 1em auto;
+	margin: 1em auto 2rem;
 }
 
 .highcharts-data-table table {
-	font-family: Verdana, sans-serif;
+	font-family: $base-font-family;
 	border-collapse: collapse;
 	border: 1px solid #ebebeb;
 	margin: 10px auto;
