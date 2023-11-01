@@ -11,6 +11,7 @@ const colors = Highcharts.getOptions().colors.map((c, i) =>
 // Build the chart
 Highcharts.chart('highchart-revenue', {
 	chart: {
+		height: '80%',
 		plotBackgroundColor: null,
 		plotBorderWidth: null,
 		plotShadow: false,
@@ -60,6 +61,7 @@ Highcharts.chart('highchart-revenue', {
 
 Highcharts.chart('highchart-expense', {
 	chart: {
+		height: '80%',
 		plotBackgroundColor: null,
 		plotBorderWidth: null,
 		plotShadow: false,
