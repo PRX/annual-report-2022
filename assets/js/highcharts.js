@@ -70,7 +70,7 @@
 				{ name: 'Underwriting', y: 12801442, color: '#003A57' },
 				{ name: 'Operating Activities', y: 11567053, color: '#CA3D15' },
 				{ name: 'Grants', y: 4729519, color: '#0089BD' },
-				{ name: 'Individual Grants', y: 1641345, color: '#FB9306' },
+				{ name: 'Individual Gifts', y: 1641345, color: '#FB9306' },
 				{ name: 'Other', y: 1325191, color: '#A1C5E2' }
 			]
 		}]
