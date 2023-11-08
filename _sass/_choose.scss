@@ -78,7 +78,6 @@
   text-decoration: none;
 
   font-size: 1rem;
-  overflow: hidden;
   text-wrap: balance;
 
   border: $border-width solid var(--_path-color);
@@ -115,10 +114,10 @@
   .cta {
     position: relative;
     display: none;
-    align-content: end;
   }
 
   .cta-content {
+    align-self: end;
     position: sticky;
     bottom: 0;
     display: grid;
@@ -129,12 +128,6 @@
     .message {
       text-transform: uppercase;
     }
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0 calc(1.5rem / -2 - #{$border-width});
   }
 
   &:active {
